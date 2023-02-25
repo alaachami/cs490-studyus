@@ -1,5 +1,5 @@
 ###### cs490-studyus
-##Core Features
+## Core Features
 - [ ] Matchmaking algo
   - [ ] Specify Filter
 - [ ] Chatroom
