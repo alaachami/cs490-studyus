@@ -1,1 +1,21 @@
-# cs490-studyus
+###### cs490-studyus
+##Core Features
+-[]Matchmaking algo
+  -[]Specify Filter
+-[]Chatroom
+  -[]Messaging
+  -[]Event Calendar
+  -[]File Sharing
+  -[]Whiteboard
+  -[]Dedicated Textbook
+  -[]Voice and Video
+-[]Database
+  -[]User Accounts
+  -[]security
+-[]Web App
+  -[]Login/Signup page
+  -[]User homepage
+  -[]Search for group page
+  -[]Landing page
+  -[]Form Design
+  -[]Chatroom page
