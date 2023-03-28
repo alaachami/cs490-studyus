@@ -1,3 +1,12 @@
+-- User table
+CREATE TABLE users (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(50) NOT NULL,
+  email VARCHAR(255) NOT NULL UNIQUE CHECK (POSITION('@' IN email) > 1),
+  password VARCHAR(255) NOT NULL,
+  bio TEXT,
+  created_at TIMESTAMP NOT NULL DEFAULT NOW()
+);
 -- Group table
 CREATE TABLE groups (
   id SERIAL PRIMARY KEY,
@@ -11,17 +20,6 @@ CREATE TABLE groups (
   capacity INT NOT NULL,
   FOREIGN KEY (admin_id) REFERENCES users(id)
 );
-
--- User table
-CREATE TABLE users (
-  id SERIAL PRIMARY KEY,
-  name VARCHAR(50) NOT NULL,
-  email VARCHAR(255) NOT NULL UNIQUE CHECK (POSITION('@' IN email) > 1),
-  password VARCHAR(255) NOT NULL,
-  bio TEXT,
-  created_at TIMESTAMP NOT NULL DEFAULT NOW()
-);
-
 -- Group Members table
 CREATE TABLE group_members (
   group_id INT NOT NULL,
@@ -31,7 +29,6 @@ CREATE TABLE group_members (
   FOREIGN KEY (group_id) REFERENCES groups(id),
   FOREIGN KEY (member_id) REFERENCES users(id)
 );
-
 -- Chat Message table
 CREATE TABLE chat_messages (
   id SERIAL PRIMARY KEY,
@@ -42,7 +39,6 @@ CREATE TABLE chat_messages (
   FOREIGN KEY (group_id) REFERENCES groups(id),
   FOREIGN KEY (sender_id) REFERENCES users(id)
 );
-
 -- File table
 CREATE TABLE files (
   id SERIAL PRIMARY KEY,
