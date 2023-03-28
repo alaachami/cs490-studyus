@@ -46,18 +46,15 @@
 --   FOREIGN KEY (sender_id) REFERENCES users(id)
 -- );
 
--- -- File table
--- CREATE TABLE files (
---   id INT NOT NULL AUTO_INCREMENT,
---   group_id INT NOT NULL,
---   uploader_id INT NOT NULL,
---   filename VARCHAR(255) NOT NULL,
---   filepath VARCHAR(255) NOT NULL,
---   timestamp DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
---   PRIMARY KEY (id),
---   FOREIGN KEY (group_id) REFERENCES groups(id),
---   FOREIGN KEY (uploader_id) REFERENCES users(id)
--- );
+CREATE TABLE users (
+  id INT NOT NULL AUTO_INCREMENT,
+  username VARCHAR(50) NOT NULL,
+  email VARCHAR(255) NOT NULL CHECK (POSITION('@' IN email) > 1),
+  password VARCHAR(255) NOT NULL,
+  bio TEXT,
+  created_at TIMESTAMP NOT NULL DEFAULT NOW(),
+  PRIMARY KEY (id)
+);
 
 -- Group table
 CREATE TABLE groups (
