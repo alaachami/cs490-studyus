@@ -15,8 +15,8 @@ CREATE TABLE groups (
 -- User table
 CREATE TABLE users (
   id SERIAL PRIMARY KEY,
-  username VARCHAR(50) NOT NULL,
-  email VARCHAR(255) NOT NULL CHECK (POSITION('@' IN email) > 1),
+  name VARCHAR(50) NOT NULL,
+  email VARCHAR(255) NOT NULL UNIQUE CHECK (POSITION('@' IN email) > 1),
   password VARCHAR(255) NOT NULL,
   bio TEXT,
   created_at TIMESTAMP NOT NULL DEFAULT NOW()
