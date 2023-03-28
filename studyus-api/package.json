@@ -1,0 +1,33 @@
+{
+  "name": "studyus-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon server.js",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alaachami/cs490-studyus.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "colors": "^1.4.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.2",
+    "jest": "^29.5.0",
+    "jsonwebtoken": "^9.0.0",
+    "lowdb": "^3.0.0",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.19",
+    "pg": "^8.7.3"
+  },
+  "bugs": {
+    "url": "https://github.com/alaachami/cs490-studyus/issues"
+  },
+  "homepage": "https://github.com/alaachami/cs490-studyus#readme"
+}
