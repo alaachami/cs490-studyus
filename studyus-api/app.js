@@ -8,6 +8,7 @@ const {NotFoundError} = require("./utils/errors")
 const security = require('./middleware/security')
 //Importing Models and Routes
 const authRoutes = require('./routes/auth')
+const groupRoutes = require('./routes/group')
 
 //Create Express Application
 const app = express()
@@ -20,6 +21,7 @@ app.use(morgan('tiny'))
 app.use(security.extractUserFromJwt)
 //APP USE - All authorization/registration routes including login, register, and me
 app.use("/auth", authRoutes)
+app.use("/group", groupRoutes)
 
 //Server Health Check
 app.get('/', async(req,res,next) => {
