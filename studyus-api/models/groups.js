@@ -280,9 +280,6 @@ class Groups
     static async searchForGroups(query, user)
     {
 
-        // Fetch the group information 
-        // const group = await Groups.fetchGroupById(groupId, user)
-
         //Runs a query to find all groups matching search query in description/title
         //If successful, returns all the groups as an array
         const results = await db.query(
@@ -295,7 +292,7 @@ class Groups
                 OR subject ILIKE '%' || $1 || '%'
             `,[query])
         
-        //Return all the users that are apart of a group 
+        // Return all matching groups
         return results.rows
     }
 
