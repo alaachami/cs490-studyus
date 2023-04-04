@@ -275,13 +275,28 @@ class Groups
         //Return all the users that are apart of a group 
         return results.rows
     }
+
+    // FUNCTION TO SEARCH FOR GROUP GIVEN TEXT QUERY
+    static async searchForGroups(query, user)
+    {
+
+        //Runs a query to find all groups matching search query in description/title
+        //If successful, returns all the groups as an array
+        const results = await db.query(
+            `
+                SELECT *
+                FROM groups
+                WHERE name ILIKE '%' || $1 || '%'
+                OR description ILIKE '%' || $1 || '%'
+                OR school ILIKE '%' || $1 || '%'
+                OR subject ILIKE '%' || $1 || '%'
+            `,[query])
+        
+        // Return all matching groups
+        return results.rows
+    }
+
     
-
-
-
-
-    
-
 
     /*
     //FUNCTION TO RETURN AN ARRAY OF PROJECTS THAT A group HAS

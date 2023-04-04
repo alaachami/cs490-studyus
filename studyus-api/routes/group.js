@@ -152,6 +152,29 @@ router.get("/:groupId/members", security.requireAuthenticatedUser, async (req, r
     }
 })
 
+//FUNCTION TO SEARCH FOR GROUP
+router.post("/search", security.requireAuthenticatedUser, async (req, res, next) => {
+    try {
+        // Retrieve the groupId param from the given URL 
+
+        //Retrieve the user information from the local server
+        //console.log(res.locals)
+        const { user } = res.locals
+        const { query } = req.body
+        console.log(query)
+
+        //Run the fetchMembersForATeam function 
+        // const members = await Groups.fetchMembersForAGroup({groupId: groupId, user: user });
+        const groupList = await Groups.searchForGroups(query, user);
+        console.log(groupList)
+
+        // Return the user array if successful
+        return res.status(200).json({groupList: groupList})
+    }
+    catch (error) {
+        next(error)
+    }
+})
 
 
 
