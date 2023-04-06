@@ -13,6 +13,30 @@ const groupRoutes = require('./routes/group')
 //Create Express Application
 const app = express()
 
+
+
+//Server Socket.io
+const server = require('http').Server(app)
+const io = require('socket.io')(server)
+const { v4:uuiV4 } = require('uuid')
+
+app.set('view engine', 'ejs')
+app.use(express.static('public'))
+
+app.get('/', (req,res) => {
+    res.redirect(`/${uuiV4()}`)
+})
+
+app.get('/:room', (req,res) =>{
+    res.render('room', { roomId: req.params.room})
+})
+
+io.on('connection', socket => {
+    socket.on('join-room', (roomId, userId) => {
+        socket.join(roomId)
+        socket.to(roomId).broadcast.emit('user-connected', userId)
+    })
+})
 //APP USE - Parse incoming request bodies
 app.use(cors())
 app.use(express.json())
