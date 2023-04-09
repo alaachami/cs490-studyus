@@ -1,8 +1,12 @@
 import "./LoginPage.css";
+import * as React from "react";
+import LoginForm from "./Loginform/LoginForm";
 
 export default function LoginPage() {
-	return (
-        <h1>Hello World</h1>
-        // DO HTML CODING HERE
-	);
+        return (
+        <div className="login-page">
+                <h1>Login Page</h1>
+                <LoginForm />
+        </div>
+        );
 }
