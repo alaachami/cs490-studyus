@@ -198,6 +198,9 @@ class Groups
         return newgroup
     }
 
+    static async removeGroupMember(email) {
+        
+    }
 
 
 

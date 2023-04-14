@@ -19,6 +19,10 @@ export default function DashBoard() {
                 addToGroup(groupId, user.email);
         };
 
+        const handleLeaveGroup = (groupId) => {
+
+        };
+
         const logout = () => {
                 // Later on, add functions to clear other contexts (when they are made)
                 logoutUser();
