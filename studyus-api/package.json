@@ -24,7 +24,8 @@
     "lowdb": "^3.0.0",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.19",
-    "pg": "^8.7.3"
+    "pg": "^8.7.3",
+    "socket.io": "^4.6.1"
   },
   "bugs": {
     "url": "https://github.com/alaachami/cs490-studyus/issues"
