@@ -65,12 +65,17 @@ class ApiClient {
   async createNewGroup(credentials){
     return await this.request({ endpoint: 'group', method: 'POST', data: credentials })
   }
-  async addMemberToGroup({ groupId, memberToAdd}){
-    return await this.request({ endpoint: `group/${groupId}/add`, method: 'POST',  data: {email: memberToAdd} })
+  async addMemberToGroup( groupId, memberToAdd ){
+    console.log("addMemberToGroup groupId: " + groupId)
+    return await this.request({ endpoint: `group/add`, method: 'POST',  data: {email: memberToAdd, groupId: groupId} })
   }
-  //function to get an array of users who are apart of a specific team
+  //function to get an array of users who are a part of a specific group
   async fetchMemberList(groupId){
     return await this.request({endpoint: `group/${groupId}/members`, method: 'GET' })
+  }
+  // function to search for group given search query
+  async searchForGroups(query){
+    return await this.request({ endpoint: `group/search`, method: 'POST', data: {query: query} })
   }
 
   /* Gets all the team members from multiple teams. Pass in array of all team ids we want to do this for

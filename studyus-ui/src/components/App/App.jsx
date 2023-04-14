@@ -7,6 +7,7 @@ import CallPage from "../CallPage/CallPage";
 import GroupPage from "../GroupPage/GroupPage"
 import NotFound from "../NotFound/NotFound";
 import { AuthContextProvider, useAuthContext } from "../../contexts/auth";
+import { GroupContextProvider, useGroupContext } from "../../contexts/group";
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 // import { OpenContextProvider } from "../../contexts/open";
@@ -17,15 +18,16 @@ import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 export default function AppContainer() {
   return (
     <AuthContextProvider>
+      <GroupContextProvider>
         <App />
+      </GroupContextProvider>
     </AuthContextProvider>
   );
 }
 
 export function App() {
-  const { user, setUser, setInitialized, setIsProcessing, setError } =
-    useAuthContext();
-  // const { groups, fetchGroups } = useGroupContext();
+  const { user, setUser, setInitialized, setIsProcessing, setError } = useAuthContext();
+   const { myGroups, fetchMyGroups } = useGroupContext();
 
   useEffect(() => {
     const fetchUserInfo = async () => {

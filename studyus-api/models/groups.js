@@ -181,6 +181,9 @@ class Groups
             RETURNING group_id, member_id, is_admin
         `, [groupId, newMemberId, false])
 
+        const memberCount = await Groups.fetchMembersForAGroup(groupId, user)
+        console.log(memberCount)
+        console.log("MemberCount.length: " + memberCount.length)
 
         //Store the results of the new group information
         //If user is not authorized to change the group information or the groupId is not found or the array can not be updated
@@ -291,6 +294,23 @@ class Groups
                 OR school ILIKE '%' || $1 || '%'
                 OR subject ILIKE '%' || $1 || '%'
             `,[query])
+        
+        // Return all matching groups
+        return results.rows
+    }
+
+    // FUNCTION TO CHECK IF GROUP IS FULL
+    static async checkAtCapacity(groupId, user)
+    {
+
+        //Runs a query to find all groups matching search query in description/title
+        //If successful, returns all the groups as an array
+        const results = await db.query(
+            `
+            SELECT capacity
+            FROM groups
+            WHERE id = $1
+            `,[groupId])
         
         // Return all matching groups
         return results.rows
