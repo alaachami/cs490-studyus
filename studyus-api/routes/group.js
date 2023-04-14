@@ -83,10 +83,11 @@ router.get("/:groupId", security.requireAuthenticatedUser, async (req, res, next
 
 
 //FUNCTION TO ADD A NEW MEMBER TO A GROUP
-router.post("/:groupId/add", security.requireAuthenticatedUser, async (req, res, next) => {
+router.post("/add", security.requireAuthenticatedUser, async (req, res, next) => {
     try {
         //Retrieve the team id from the given url
-        const { groupId } = req.params
+        const { groupId } = req.body
+        console.log(groupId)
         //Retrieve the user information from the local server
         const { user } = res.locals
         //Call the addNewTeamMember function to update the members of a team

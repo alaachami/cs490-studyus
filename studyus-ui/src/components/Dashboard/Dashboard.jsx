@@ -1,22 +1,70 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
 import { useAuthContext } from "../../contexts/auth";
+import { useGroupContext } from "../../contexts/group";
 import "./Dashboard.css";
 
 export default function DashBoard() {
         const navigate = useNavigate();
         const { user, logoutUser } = useAuthContext();
+        const { myGroups, foundGroups, fetchMyGroups, searchForGroups, addToGroup } = useGroupContext();
+        const [searchText, setSearchText] = useState("");
+        const handleSearchTextChange = (event) => {
+                const query = event.target.value;
+                setSearchText(query);
+                searchForGroups(query);
+        };
+
+        const handleJoinGroup = (groupId) => {
+                addToGroup(groupId, user.email);
+        };
+
         const logout = () => {
                 // Later on, add functions to clear other contexts (when they are made)
                 logoutUser();
                 navigate("/");
         };
 
+        useEffect(() => {
+                // This effect runs whenever myGroups changes
+        }, [myGroups]);
+
+        // useEffect to fetch groups on initial load
+        useEffect(() => {
+                fetchMyGroups();
+                //newFetchTeamsTableData();
+                //setIsLoading(false);
+        }, []); 
+
+        const renderedMyGroups = myGroups && myGroups.map((group) => (
+                <div key={group.id}>
+                  <Link to={'/groups/' + group.id}><h2>{group.name}</h2></Link>
+                  <p>{group.description}</p>
+                  {/* Add any other group information here */}
+                </div>
+        ));
+        const renderedFoundGroups = foundGroups && foundGroups.map((group) => (
+                <div key={group.id}>
+                  <Link to={'/groups/' + group.id}><h2>{group.name}</h2></Link>
+                  <p>{group.description}</p>
+                  <button onClick={() => handleJoinGroup(group.id)}>Join Group</button>
+                  {/* Add any other group information here */}
+                </div>
+        ));
+
 	return (
         <div className="dashboard">
         
         <h1>Dashboard, hello {user.name}</h1>
         <button onClick={logout}>Logout</button>
+
+        {renderedMyGroups}
+
+        <div className="search-area">
+                <input type="text" onChange={handleSearchTextChange} placeholder="Search for groups" />
+        </div>
+
+        {foundGroups[0] && searchText.length > 0 ? renderedFoundGroups : <h1>No groups found</h1>}
 
         </div>
 	);
