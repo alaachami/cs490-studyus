@@ -198,12 +198,57 @@ class Groups
         return newgroup
     }
 
+    static async removeGroupMember({groupId, oldMember, user}) {
+        
+        //fetch user if
+        const userId = await Groups.fetchUserIdFromEmail(user.email);
+    
+        // is user admin?
+        const isAdmin = await Groups.checkIfUserIsAdmin(groupId, userId);
+        if (!isAdmin) {
+            throw new UnauthorizedError("Only group admins can remove group members.");
+        }
+        // get the memebr id you want to rm
+        const oldMemberId = await Groups.fetchUserIdFromEmail(oldMember.email);
+        // query
+        const results = await db.query(
+            `
+            DELETE FROM group_members
+            WHERE group_id = $1 AND member_id = $2
+            RETURNING *
+            `, [groupId, oldMemberId]);
+    
+        //error
+        if (results.rows.length === 0) {
+            throw new NotFoundError("Member not found in the group.");
+        }
+    
+        //return deleted member
+        return results.rows[0];
+    }
 
+    static async leaveGroup({groupId, user}) {
 
+        //fetch user if
+        const userId = await Groups.fetchUserIdFromEmail(user.email);
 
-
-
-
+        // query
+        const results = await db.query(
+            `
+            DELETE FROM group_members
+            WHERE group_id = $1 AND member_id = $2
+            RETURNING *
+            `, [groupId, userId]);
+    
+        //error
+        if (results.rows.length === 0) {
+            throw new NotFoundError("Member not found in the group.");
+        }
+    
+        //return deleted member
+        return results.rows[0];
+    }
+    
     //FUNCTION TO FIND A USER'S ID GIVEN ONLY THE USER EMAIL
     static async fetchUserIdFromEmail(email)
     {
@@ -222,7 +267,25 @@ class Groups
         return userId
     }
 
-
+    static async checkIfUserIsAdmin(groupId, userId) {
+        // Run a query to check if the given user is an admin of the group
+        const results = await db.query(
+            `
+            SELECT is_admin
+            FROM group_members
+            WHERE group_id = $1 AND member_id = $2
+            `, [groupId, userId]
+        );
+    
+        // If there are no rows returned, it means the user is not a member of the group
+        if (results.rows.length === 0) {
+            throw new NotFoundError("User not found in the group.");
+        }
+    
+        // Return whether the user is an admin or not
+        return results.rows[0].is_admin;
+    }
+    
 
 
 
