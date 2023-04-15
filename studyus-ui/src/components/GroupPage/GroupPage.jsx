@@ -10,8 +10,8 @@ export default function GroupPage() {
 
         const renderedMembers = members && members.map((member) => (
                 
-                <div key={member.id}>
-                  <h2>{member.name}</h2>
+                <div className="member" key={member.id}>
+                  <div className="member-name">{member.name}</div>
                   <p>{member.email}</p>
                 </div>
               ));
@@ -33,7 +33,8 @@ export default function GroupPage() {
                 <div className="banner">
                         <h1>cs100</h1>
                 </div>
-                {renderedMembers}
+
+                <div className="members-cont">{renderedMembers}</div>
                 
 
         </>
