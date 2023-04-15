@@ -87,11 +87,16 @@ export const GroupContextProvider = ({ children }) => {
 
   const fetchMembers = async (groupId) => {
     console.log("Fetchgroupmembers running...")
+    console.log("fetchMembers groupid: " + groupId)
     setIsLoading(true);
     setError(null);
+    console.log("Before apiClient.fetchMemberList")
     const { data, error } = await apiClient.fetchMemberList(groupId);
+    console.log("After apiClient.fetchMemberList")
+    console.log(data.groupData)
     if (data) {
-      setMembers(data.memberData)
+      console.log(data.groupData)
+      setMembers(data.groupData)
       console.log("fetchGroupMembers member list: " + members)
     } else if (error) {
       setError(error);

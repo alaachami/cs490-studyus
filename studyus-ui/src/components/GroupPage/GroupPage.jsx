@@ -1,11 +1,13 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom"
 import { useGroupContext } from "../../contexts/group";
 import "./GroupPage.css";
 
 
 export default function GroupPage() {
         const { members, setMembers, fetchMembers } = useGroupContext();
-        console.log(members)
+        const { id } = useParams()
+
         const renderedMembers = members && members.map((member) => (
                 
                 <div key={member.id}>
@@ -20,7 +22,7 @@ export default function GroupPage() {
         
         // useEffect to fetch groups on initial load
         useEffect(() => {
-                fetchMembers();
+                fetchMembers(id);
         }, []);
 
 	return (
