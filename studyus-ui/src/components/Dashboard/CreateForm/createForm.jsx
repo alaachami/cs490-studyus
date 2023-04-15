@@ -56,6 +56,7 @@ export default function GroupForm() {
             placeholder="Group ISBN"
           />
         </div>
+        {errors.isbn && <p className="error">{errors.isbn}</p>}
 
         <div className="input-field">
           <label htmlFor="school">School</label>
@@ -91,6 +92,7 @@ export default function GroupForm() {
             placeholder="Group Capacity"
           />
         </div>
+        {errors.capacity && <p className="error">{errors.capacity}</p>}
 
         <button className="submit-form" disabled={isLoading} onClick={handleOnSubmit}>
           {isLoading ? "Loading..." : "Submit"}
