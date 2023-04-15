@@ -46,7 +46,7 @@ export default function DashBoard() {
 
   const renderedMyGroups = myGroups && myGroups.map((group) => (
     <div key={group.id}>
-      <Link to={'/groups/' + group.id}><h2>{group.name}</h2></Link>
+      <Link to={'/group/' + group.id}><h2>{group.name}</h2></Link>
       <p>{group.description}</p>
       {/* Add any other group information here */}
     </div>
