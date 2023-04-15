@@ -31,7 +31,7 @@ export const useGroupForm = ({user}) => {
     }
   
     setForm((f) => ({ ...f, [name]: value }));
-    setErrors((e) => ({ ...e, [name]: error }));
+    
   };
 
   const handleOnSubmit = async () => {
@@ -47,7 +47,12 @@ export const useGroupForm = ({user}) => {
         capacity: form.capacity,
       });
 
-      navigate("/dashboard");
+      if (error){
+        setErrors((e) => ({ ...e, [name]: error }));
+      }
+      else{
+        navigate("/dashboard");
+      }  
 
       if (error) {
         setErrors((e) => ({ ...e, form: error }));
