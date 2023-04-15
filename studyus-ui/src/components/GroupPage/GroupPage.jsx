@@ -1,18 +1,23 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import { useGroupContext } from "../../contexts/group";
 import { useAuthContext } from "../../contexts/auth";
 import "./GroupPage.css";
 
 
 export default function GroupPage() {
+
         const { members, setMembers, fetchMembers, leaveGroup } = useGroupContext();
         const { user } = useAuthContext();
         const { id } = useParams()
+        const navigate = useNavigate();
 
         const handleLeaveGroup = (id, user) => {
-                leaveGroup( id, user.email);      
-              };
+                leaveGroup(id, user.email);  
+                navigate('/dashboard');
+        };
+
+
         const renderedMembers = members && members.map((member) => (
                 
                 <div className="member" key={member.id}>
@@ -38,7 +43,7 @@ export default function GroupPage() {
                 </div>
                 <div className="banner">
                         <h1>cs100</h1>
-                        <button onClick={handleLeaveGroup(id, user)}>Leave Group </button> 
+                        <button onClick={() => handleLeaveGroup(id, user)}>Leave Group</button> 
                 </div>
 
                 <div className="members-cont">{renderedMembers}</div>
