@@ -110,7 +110,7 @@ router.post("/remove", security.requireAuthenticatedUser, async (req, res, next)
         const { user } = res.locals
         //Call the addNewTeamMember function to update the members of a team
         //Request body must have the new member's email; If not, the request will be unsuccessful
-        const updatedGroup = await Groups.removeGroupMember({ groupId: groupId, member: req.body, user: user })
+        const updatedGroup = await Groups.leaveGroup({ groupId: groupId, user: user })
 
         //Return the new team information if successful
         return res.status(200).json({ group: updatedGroup })
