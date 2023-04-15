@@ -63,20 +63,20 @@ export default function DashBoard() {
 
   
   return (
+    <>
+    <div className="logo"><h1>StudyUs</h1></div>
     <div className="dashboard">
-      <h1>Dashboard, hello {user.name}</h1>
-      <button onClick={logout}>Logout</button>
-      <button onClick={handleCreateGroup}> Create Group </button> 
-                
-        
-
-      {renderedMyGroups}
-
-      <div className="search-area">
-        <input type="text" onChange={handleSearchTextChange} placeholder="Search for groups" />
+        <div className="banner"><h1>Dashboard, Hello {user.name}!</h1></div>
+        <div className="main">
+          <button onClick={logout}>Logout</button>
+          <button onClick={handleCreateGroup}> Create Group </button> 
+          {renderedMyGroups}
+          <div className="search-area">
+            <input type="text" onChange={handleSearchTextChange} placeholder="Search for groups" />
+          </div>
+        {foundGroups[0] && searchText.length > 0 ? renderedFoundGroups : <h1>No groups found</h1>}
       </div>
-
-      {foundGroups[0] && searchText.length > 0 ? renderedFoundGroups : <h1>No groups found</h1>}
     </div>
+    </>
   );
 }

@@ -1,0 +1,22 @@
+@font-face {
+    font-family: 'Inter'; /*a name to be used later*/
+    src: "studyus-ui/src/res/Inter/Inter-VariableFont_slnt,wght.ttf" /*URL to font*/
+}
+.logo{
+    position: absolute;
+    width: 249px;
+    height: 85px;
+    left: 0px;
+    top: 0px;
+    background: #7F56DA;
+}
+.logo h1{
+    font-family: 'Inter';
+    height: 39px;
+    text-align: center;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 39px;
+    color: #FFFFFF;
+}
