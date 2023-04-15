@@ -33,6 +33,9 @@ export const GroupContextProvider = ({ children }) => {
     }
     setIsLoading(false);
   };
+
+  const createGroup = async () => {
+  }
   
   const searchForGroups = async (query) => {
     setIsLoading(true);

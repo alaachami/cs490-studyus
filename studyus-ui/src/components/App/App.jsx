@@ -6,6 +6,7 @@ import Dashboard from "../Dashboard/Dashboard";
 import CallPage from "../CallPage/CallPage";
 import GroupPage from "../GroupPage/GroupPage"
 import NotFound from "../NotFound/NotFound";
+import GroupForm from "../Dashboard/CreateForm/createForm";
 import { AuthContextProvider, useAuthContext } from "../../contexts/auth";
 import { GroupContextProvider, useGroupContext } from "../../contexts/group";
 import "./App.css";
@@ -83,10 +84,15 @@ export function App() {
               element={<ProtectedRoute element={<GroupPage />} />}
             />
             <Route
+              path="/groupform"
+              element={<ProtectedRoute element={<GroupForm />} />}
+            />
+            <Route
               path="/call"
               element={<ProtectedRoute element={<CallPage />} />}
             />
-            <Route path="*" element={<NotFound />} />
+            
+            <Route path="*" element={<NotFound />} />  
           </Routes>
         </main>
       </BrowserRouter>
