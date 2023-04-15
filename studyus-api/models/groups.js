@@ -198,9 +198,61 @@ class Groups
         return newgroup
     }
 
-    static async removeGroupMember(email) {
-        
+    static async removeGroupMember({groupId, oldMember, user}) {
+        //If a old member was not provided, throw a bad request error detailing that the user needs to provide a member email
+        if(!oldMember)
+        {
+            throw new BadRequestError(`User information is missing! Please provide an email!`)
+        }
+        //Run a separate query to find the id of the member who's email matches the given member email
+        const oldMemberId = await Groups.fetchUserIdFromEmail(oldMember.email)
+        //Run a separate query to determine whether the new member already exists within the members of the chosen group
+        const existingMember = await Groups.checkExistingMember(newMemberId, groupId)
+
+
+        //If the new member already exists within the members of a chosen group, throw a bad request error detailing duplicate member
+        if(!existingMember)
+        {
+            throw new BadRequestError(`Missing Member: ${newMember.email}! Member is not in this group!`)
+        }
+
+        //Run a query to find the id of the user who is making the request to remove a member
+        const userId = await Groups.fetchUserIdFromEmail(user.email)
+
+
+        //Run a query to update the members of group by first finding the specific group a user requested,
+        //Then check whether user is authorized to access the group by checking if they are a creator of the group or a member
+        //If this information matches, then update the members of a group by appending the new member id to the existing array
+        //Return the new group information
+        const results = await db.query(
+            `
+            INSERT INTO group_members
+            (
+                group_id,
+                member_id,
+                is_admin
+            )
+            VALUES($1, $2, $3)
+            RETURNING group_id, member_id, is_admin
+        `, [groupId, newMemberId, false])
+
+        const memberCount = await Groups.fetchMembersForAGroup(groupId, user)
+        console.log(memberCount)
+        console.log("MemberCount.length: " + memberCount.length)
+
+        //Store the results of the new group information
+        //If user is not authorized to change the group information or the groupId is not found or the array can not be updated
+        //Then throw a not found error detailing that the request could not be executed
+        const newgroup = results.rows[0]
+        if(!newgroup)
+        {
+            throw new NotFoundError("Group was not found! Could not add new member!")
+        }
+
+        //Return the new group information with the updated members array
+        return newgroup
     }
+    
 
 
 
