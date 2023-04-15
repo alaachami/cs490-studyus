@@ -52,6 +52,20 @@ export const GroupContextProvider = ({ children }) => {
     setIsLoading(false);
   };
 
+  const leaveGroup = async (groupId, userEmail) => {
+    setIsLoading(true);
+    setError(null);
+    const { data, error } = await apiClient.leaveGroup(groupId,userEmail);
+
+    if (data) {
+      fetchMyGroups();
+    } else if (error) {
+      setError(error);
+    }
+    setIsLoading(false);
+  };
+
+
   const addToGroup = async (groupId, userEmail) => {
     setIsLoading(true);
     setError(null);
@@ -113,6 +127,7 @@ export const GroupContextProvider = ({ children }) => {
     clearGroups,
     //getData,
     foundGroups,
+    leaveGroup,
     setFoundGroups,
     clearGroupContext,
   };

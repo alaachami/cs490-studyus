@@ -7,24 +7,26 @@ import GroupForm from  "./CreateForm/createForm";
 import "./Dashboard.css";
 
 export default function DashBoard() {
-        const navigate = useNavigate();
-        const { user, logoutUser } = useAuthContext();
-        const { myGroups, foundGroups, fetchMyGroups, searchForGroups, addToGroup } = useGroupContext();
-        const [searchText, setSearchText] = useState("");
-        
-        const handleSearchTextChange = (event) => {
-                const query = event.target.value;
-                setSearchText(query);
-                searchForGroups(query);
-        };
+    const navigate = useNavigate();
+    const { user, logoutUser } = useAuthContext();
+    const { myGroups, foundGroups, fetchMyGroups, searchForGroups, addToGroup, leaveGroup } = useGroupContext();
+    const [searchText, setSearchText] = useState("");
+    
+    const handleSearchTextChange = (event) => {
+            const query = event.target.value;
+            setSearchText(query);
+            searchForGroups(query);
+    };
 
-        const handleJoinGroup = (groupId) => {
-                addToGroup(groupId, user.email);
-        };
+    const handleJoinGroup = (groupId) => {
+            addToGroup(groupId, user.email);
+    };
 
-        const handleLeaveGroup = (groupId) => {
+    const handleLeaveGroup = (groupId, user) => {
+      leaveGroup( groupId, user.email);
+      
 
-        };
+    };
 
   const logout = () => {
     logoutUser();
@@ -50,8 +52,11 @@ export default function DashBoard() {
   const renderedMyGroups = myGroups && myGroups.map((group) => (
     <div key={group.id}>
       <Link to={'/group/' + group.id}><h2>{group.name}</h2></Link>
+      
       <p>{group.description}</p>
       {/* Add any other group information here */}
+
+      {/* <button onClick={handleLeaveGroup(group.id, user)}>Leave Group </button>  */}
     </div>
   ));
   
