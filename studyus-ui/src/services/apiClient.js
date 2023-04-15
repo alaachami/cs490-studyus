@@ -75,6 +75,7 @@ class ApiClient {
   }
   //function to get an array of users who are a part of a specific group
   async fetchMemberList(groupId){
+    console.log("fetchMemberList results: ", /*JSON.stringify(*/ await this.request({endpoint: `group/${groupId}/members`, method: 'GET' }))/*)*/;
     return await this.request({endpoint: `group/${groupId}/members`, method: 'GET' })
   }
   // function to search for group given search query
