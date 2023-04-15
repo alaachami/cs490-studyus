@@ -9,7 +9,7 @@ import "./Dashboard.css";
 export default function DashBoard() {
     const navigate = useNavigate();
     const { user, logoutUser } = useAuthContext();
-    const { myGroups, foundGroups, fetchMyGroups, searchForGroups, addToGroup, leaveGroup } = useGroupContext();
+    const { myGroups, foundGroups, fetchMyGroups, searchForGroups, addToGroup } = useGroupContext();
     const [searchText, setSearchText] = useState("");
     
     const handleSearchTextChange = (event) => {
@@ -20,12 +20,6 @@ export default function DashBoard() {
 
     const handleJoinGroup = (groupId) => {
             addToGroup(groupId, user.email);
-    };
-
-    const handleLeaveGroup = (groupId, user) => {
-      leaveGroup( groupId, user.email);
-      
-
     };
 
   const logout = () => {
@@ -56,7 +50,7 @@ export default function DashBoard() {
       <p>{group.description}</p>
       {/* Add any other group information here */}
 
-      {/* <button onClick={handleLeaveGroup(group.id, user)}>Leave Group </button>  */}
+      
     </div>
   ));
   

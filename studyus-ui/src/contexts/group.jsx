@@ -57,7 +57,6 @@ export const GroupContextProvider = ({ children }) => {
     setIsLoading(true);
     setError(null);
     const { data, error } = await apiClient.leaveGroup(groupId,userEmail);
-
     if (data) {
       fetchMyGroups();
     } else if (error) {
