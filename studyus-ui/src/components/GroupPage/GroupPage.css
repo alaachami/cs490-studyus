@@ -1,0 +1,37 @@
+.logo{
+    position: absolute;
+    width: 249px;
+    height: 85px;
+    left: 0px;
+    top: 0px;
+    background: #7F56DA;
+}
+.banner{
+    position: absolute;
+    width: 1032px;
+    height: 85px;
+    left: 248px;
+    top: 0px;
+    background: #AF96E7;
+}
+.members-cont{
+    display:flex;
+    flex-direction: column;
+    position: absolute;
+    width: 249px;
+    height: 635px;
+    left: 0px;
+    top: 85px;
+    background: #DFDFDF;
+}
+.member{
+    display:flex;
+    flex-direction: row;
+}
+.member-p{
+    width: 30%;
+    height: 30%;
+}
+.member-name{
+    width: fit-content;
+}
