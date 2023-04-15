@@ -3,11 +3,11 @@ import * as React from "react";
 import { useState } from "react";
 import apiClient from "../services/apiClient"
 
-export const useGroupForm = ({user, setForm}) => {
+export const useGroupForm = ({user}) => {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState({});
-  const [form] = useState({
+  const [form, setForm] = useState({
     name: "", 
     subject:  "",
     isbn:  "",
@@ -17,15 +17,21 @@ export const useGroupForm = ({user, setForm}) => {
   });
 
   const handleOnInputChange = (event) => {
-    // if (event.target.name === "email") {
-    //   if (event.target.value.indexOf("@") === -1) {
-    //     setErrors((e) => ({ ...e, email: "Please enter a valid email." }));
-    //   } else {
-    //     setErrors((e) => ({ ...e, email: null }));
-    //   }
-    // }
-
-    setForm((f) => ({ ...f, [event.target.name]: event.target.value }));
+    const { name, value } = event.target;
+    let error = '';
+  
+    // Validate if isbn is a valid decimal number
+    if (name === 'isbn' && !Number.isNaN(Number(value)) && !Number.isInteger(Number(value))) {
+      error = 'ISBN must be a decimal number';
+    }
+  
+    // Validate if capacity is a valid decimal number
+    if (name === 'capacity' && !Number.isNaN(Number(value)) && !Number.isInteger(Number(value))) {
+      error = 'Capacity must be a decimal number';
+    }
+  
+    setForm((f) => ({ ...f, [name]: value }));
+    setErrors((e) => ({ ...e, [name]: error }));
   };
 
   const handleOnSubmit = async () => {
@@ -41,11 +47,7 @@ export const useGroupForm = ({user, setForm}) => {
         capacity: form.capacity,
       });
 
-      if (data) {
-        // Perform The  necessary actions with the data returned from the API -- ASK AARON
-        
-        navigate("/group/"); // Fetch the group -- ASK Aaron
-      }
+      navigate("/dashboard");
 
       if (error) {
         setErrors((e) => ({ ...e, form: error }));
