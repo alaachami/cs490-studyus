@@ -13,7 +13,7 @@ export const GroupContextProvider = ({ children }) => {
   const [error, setError] = useState(null);
   const [myGroupsTableData, setMyGroupsTableData] = useState([]);
   const [ids, setIds] = useState([]);
-  const [members,setMembers]=useState([]);
+  const [members, setMembers] = useState([]);
   //const [tableData, setTableData] = useState([])
 
   const clearGroups = () => {
@@ -85,12 +85,14 @@ export const GroupContextProvider = ({ children }) => {
     return groupIds;
   };
 
-  const fetchGroupMembers= async (groupId) => {
+  const fetchMembers = async (groupId) => {
+    console.log("Fetchgroupmembers running...")
     setIsLoading(true);
     setError(null);
     const { data, error } = await apiClient.fetchMemberList(groupId);
     if (data) {
-      setMembers(data.groupData)
+      setMembers(data.memberData)
+      console.log("fetchGroupMembers member list: " + members)
     } else if (error) {
       setError(error);
     }
@@ -114,6 +116,9 @@ export const GroupContextProvider = ({ children }) => {
     setCurrentGroup,
     fetchMyGroups,
     addToGroup,
+    members,
+    setMembers,
+    fetchMembers,
     //fetchMyGroupsTableData,
     searchForGroups,
     //newFetchTeamsTableData,

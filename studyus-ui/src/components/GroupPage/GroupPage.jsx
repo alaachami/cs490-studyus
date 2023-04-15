@@ -1,6 +1,28 @@
+import React, { useEffect } from "react";
+import { useGroupContext } from "../../contexts/group";
 import "./GroupPage.css";
 
+
 export default function GroupPage() {
+        const { members, setMembers, fetchMembers } = useGroupContext();
+        console.log(members)
+        const renderedMembers = members && members.map((member) => (
+                
+                <div key={member.id}>
+                  <h2>{member.name}</h2>
+                  <p>{member.email}</p>
+                </div>
+              ));
+        
+        useEffect(() => {
+        // This effect runs whenever members changes
+        }, [members]);
+        
+        // useEffect to fetch groups on initial load
+        useEffect(() => {
+                fetchMembers();
+        }, []);
+
 	return (
         <>
                 <div className = "logo">
@@ -9,9 +31,7 @@ export default function GroupPage() {
                 <div className="banner">
                         <h1>cs100</h1>
                 </div>
-                <div className="members-cont">
-                        
-                </div>
+                {renderedMembers}
                 
 
         </>
