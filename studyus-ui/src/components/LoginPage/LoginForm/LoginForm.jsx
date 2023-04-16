@@ -10,11 +10,11 @@ export default function LoginForm() {
   const { form, errors, isLoading, handleOnInputChange, handleOnSubmit } =
     useLoginForm({ user, setUser });
 
-    React.useEffect(() => {
-        return () => {
-        // Cancel any asynchronous operations or subscriptions here
-        };
-    }, []);
+  React.useEffect(() => {
+    return () => {
+      // Cancel any asynchronous operations or subscriptions here
+    };
+  }, []);
 
   return (
     <div className="login-form">
@@ -58,7 +58,10 @@ export default function LoginForm() {
       </div>
       <div className="footer">
         <p>
-          Don't have an account? Sign up <Link to="/register">here</Link>
+          Don't have an account? Sign up{" "}
+          <Link to="/register" className="footer-link">
+            here
+          </Link>
         </p>
       </div>
     </div>

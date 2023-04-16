@@ -1,35 +1,91 @@
-.wallpaper{
+/* Container */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  /* Wallpaper */
+  .wallpaper {
     width: 100vw;
     height: 100vh;
-    position: relative;
-
-    background: linear-gradient(0deg, rgba(127, 86, 218, 0.7), rgba(127, 86, 218, 0.7)), url(https://images.unsplash.com/photo-1585832770485-e68a5dbfad52?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3160&q=80);
-    background-position: center;
-    background-size: 100% auto; 
-}
-.login-page{
-    font-family: Inter;
     position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    background: linear-gradient(
+        0deg,
+        rgba(127, 86, 218, 0.7),
+        rgba(127, 86, 218, 0.7)
+      ),
+      url(https://images.unsplash.com/photo-1585832770485-e68a5dbfad52?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3160&q=80);
+    background-position: center;
+    background-size: cover;
+  }
+  
+  /* Login Page */
+  .login-page {
     width: 40%;
-    height: 100vh;
-    top:0px;
-    left: 30%;
-    background-color: white;
-}
-.stamp{
+    max-width: 400px;
+    padding: 40px;
+    background-color: #ffffff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    text-align: center;
+  }
+  
+  .login-title {
+    font-size: 36px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333;
+    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.1);
+  }
+
+  .stamp {
     position: absolute;
     width: 136px;
     height: 39px;
     left: 34px;
     top: 5px;
-    
     font-family: 'Inter';
     font-style: normal;
     font-weight: 800;
     font-size: 20px;
-    line-height: 39px;
-    /* identical to box height */
-    
     color: #FFFFFF;
-    
-}
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  }
+  .stamp-title 
+  {
+    position: absolute;
+    width: 139px;
+    height: 37px;
+    left: 7px;
+    top: -10px;   
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 39px;
+  }
+ 
+  .footer {
+    margin-top: 40px;
+    font-size: 14px;
+    text-align: center;
+    color: #555;
+  }
+  
+  .footer-link {
+    color: #7f56da;
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+  }
+  
+  .footer-link:hover {
+    color: #6e49b7;
+  }
