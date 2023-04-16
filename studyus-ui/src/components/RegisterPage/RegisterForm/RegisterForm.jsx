@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Link } from "react-router-dom";
-import { useLoginForm } from "../../../hooks/useLoginForm";
+import { useRegisterForm } from "../../../hooks/useRegisterForm";
 import { useAuthContext } from "../../../contexts/auth";
 
 import "./RegisterForm.css";
@@ -8,7 +8,7 @@ import "./RegisterForm.css";
 export default function RegisterForm() {
   const { user, setUser } = useAuthContext();
   const { form, errors, isLoading, handleOnInputChange, handleOnSubmit } =
-    useLoginForm({ user, setUser });
+    useRegisterForm({ user, setUser });
 
   return (
     <div className="register-form">
@@ -31,6 +31,17 @@ export default function RegisterForm() {
           {errors.email && <p className="error">{errors.email}</p>}
         </div>
         <div className="input-field">
+          <label htmlFor="name">Name</label>
+          <input
+            className="form-input"
+            name="name"
+            type="text"
+            value={form.name}
+            onChange={handleOnInputChange}
+            placeholder="Name"
+          />
+        </div>
+        <div className="input-field">
           <label htmlFor="password">Password</label>
           <input
             className="form-input"
@@ -46,11 +57,11 @@ export default function RegisterForm() {
           <label htmlFor="confirm-password">Confirm Password</label>
           <input
             className="form-input"
-            name="confirm-password"
+            name="passwordConfirm"
             type="password"
             value={form.confirmPassword}
             onChange={handleOnInputChange}
-            placeholder="Password"
+            placeholder="Confirm Password"
           />
           {errors.password && <p className="error">{errors.password}</p>}
         </div>
