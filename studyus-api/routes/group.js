@@ -171,6 +171,26 @@ router.get("/:groupId/members", security.requireAuthenticatedUser, async (req, r
     }
 })
 
+//FUNCTION GET Capacity of a group
+router.get("/:groupId/capacity", security.requireAuthenticatedUser, async (req, res, next) => {
+    try {
+        // Retrieve the groupId param from the given URL 
+        const { groupId } = req.params;
+        console.log(groupId)
+    
+        //Run the fetchMembersForATeam function 
+        // const members = await Groups.checkGroupCapacity({groupId: groupId, user: user });
+        const capacity = await Groups.checkGroupCapacity(groupId);
+        console.log(capacity)
+
+        // Return the user array if successful
+        return res.status(200).json({capacity: capacity})
+    }
+    catch (error) {
+        next(error)
+    }
+})
+
 //FUNCTION TO SEARCH FOR GROUP
 router.post("/search", security.requireAuthenticatedUser, async (req, res, next) => {
     try {

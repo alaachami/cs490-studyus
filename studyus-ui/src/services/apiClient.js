@@ -78,6 +78,11 @@ class ApiClient {
     console.log("fetchMemberList results: ", /*JSON.stringify(*/ await this.request({endpoint: `group/${groupId}/members`, method: 'GET' }))/*)*/;
     return await this.request({endpoint: `group/${groupId}/members`, method: 'GET' })
   }
+  async checkGroupCapacity(groupId){
+    console.log("Group Capacity: ", /*JSON.stringify(*/ await this.request({endpoint: `group/${groupId}/capacity`, method: 'GET' }))/*)*/;
+    return await this.request({endpoint: `group/${groupId}/capacity`, method: 'GET' })
+  }
+
   // function to search for group given search query
   async searchForGroups(query){
     return await this.request({ endpoint: `group/search`, method: 'POST', data: {query: query} })
