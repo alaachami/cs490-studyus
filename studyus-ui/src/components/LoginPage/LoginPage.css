@@ -1,0 +1,35 @@
+.wallpaper{
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+
+    background: linear-gradient(0deg, rgba(127, 86, 218, 0.7), rgba(127, 86, 218, 0.7)), url(https://images.unsplash.com/photo-1585832770485-e68a5dbfad52?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3160&q=80);
+    background-position: center;
+    background-size: 100% auto; 
+}
+.login-page{
+    font-family: Inter;
+    position: absolute;
+    width: 40%;
+    height: 100vh;
+    top:0px;
+    left: 30%;
+    background-color: white;
+}
+.stamp{
+    position: absolute;
+    width: 136px;
+    height: 39px;
+    left: 34px;
+    top: 5px;
+    
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 20px;
+    line-height: 39px;
+    /* identical to box height */
+    
+    color: #FFFFFF;
+    
+}
