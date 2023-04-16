@@ -15,12 +15,15 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
 import apiClient from "../../services/apiClient";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
+import { ChatContextProvider } from "../../contexts/chat";
 
 export default function AppContainer() {
   return (
     <AuthContextProvider>
       <GroupContextProvider>
-        <App />
+        <ChatContextProvider>
+          <App />
+        </ChatContextProvider>
       </GroupContextProvider>
     </AuthContextProvider>
   );
