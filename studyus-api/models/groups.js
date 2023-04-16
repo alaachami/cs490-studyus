@@ -228,11 +228,10 @@ class Groups
     }
 
     static async leaveGroup({groupId, user}) {
-
-        //fetch user if
+        // Fetch user ID from email
         const userId = await Groups.fetchUserIdFromEmail(user.email);
-
-        // query
+    
+        // Delete member from group
         const results = await db.query(
             `
             DELETE FROM group_members
@@ -240,12 +239,31 @@ class Groups
             RETURNING *
             `, [groupId, userId]);
     
-        //error
+        // If no rows are returned, it means the member was not found in the group
         if (results.rows.length === 0) {
             throw new NotFoundError("Member not found in the group.");
         }
     
-        //return deleted member
+        // Check if the group has no members left
+        const groupMembersCount = await db.query(
+            `
+            SELECT COUNT(*)
+            FROM group_members
+            WHERE group_id = $1
+            `, [groupId]
+        );
+    
+        // If there are no members left in the group, delete the group
+        if (groupMembersCount.rows[0].count === '0') {
+            await db.query(
+                `
+                DELETE FROM groups
+                WHERE id = $1
+                `, [groupId]
+            );
+        }
+    
+        // Return the deleted member
         return results.rows[0];
     }
     
