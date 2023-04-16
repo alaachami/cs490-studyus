@@ -16,14 +16,14 @@ export default function GroupForm() {
 
   return (
     <div className="create-group">
-      <h2>Create A Group</h2>
+      <h2 className="form-title">Create A Group</h2>
 
       {Boolean(errors.form) && <p className="error">{errors.form}</p>}
       <br />
 
       <div className="form">
         <div className="input-field">
-          <label htmlFor="name">Group Name</label>
+          <label htmlFor="name" className="form-label">Group Name</label>
           <input
             className="form-input"
             name="name"
@@ -34,7 +34,7 @@ export default function GroupForm() {
           />
         </div>
         <div className="input-field">
-          <label htmlFor="subject">Subject</label>
+          <label htmlFor="subject" className="form-label">Subject</label>
           <input
             className="form-input"
             name="subject"
@@ -46,7 +46,7 @@ export default function GroupForm() {
         </div>
 
         <div className="input-field">
-          <label htmlFor="isbn">ISBN</label>
+          <label htmlFor="isbn" className="form-label">ISBN</label>
           <input
             className="form-input"
             name="isbn"
@@ -59,7 +59,7 @@ export default function GroupForm() {
         {errors.isbn && <p className="error">{errors.isbn}</p>}
 
         <div className="input-field">
-          <label htmlFor="school">School</label>
+          <label htmlFor="school" className="form-label">School</label>
           <input
             className="form-input"
             name="school"
@@ -71,7 +71,7 @@ export default function GroupForm() {
         </div>
 
         <div className="input-field">
-          <label htmlFor="description">Description</label>
+          <label htmlFor="description" className="form-label">Description</label>
           <textarea
             className="form-input"
             name="description"
@@ -82,7 +82,7 @@ export default function GroupForm() {
         </div>
 
         <div className="input-field">
-          <label htmlFor="capacity">Capacity</label>
+          <label htmlFor="capacity" className="form-label">Capacity</label>
           <input
             className="form-input"
             name="capacity"
