@@ -79,9 +79,10 @@ export default function DashBoard() {
           </div>
           <div className="main">
             <div className="search-area">
+            <h3>Find New Group</h3>
               <input type="text" onChange={handleSearchTextChange} placeholder="Search for groups" />
             </div>
-          {foundGroups[0] && searchText.length > 0 ? renderedFoundGroups : <h3>Search For Group</h3>}
+          {foundGroups[0] && searchText.length > 0 ? renderedFoundGroups : <h3></h3>}
         </div>
         </div>
     </div>
