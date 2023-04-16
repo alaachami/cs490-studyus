@@ -2,6 +2,16 @@
     font-family: 'Inter'; /*a name to be used later*/
     src: "studyus-ui/src/res/Inter/Inter-VariableFont_slnt,wght.ttf" /*URL to font*/
 }
+<<<<<<< HEAD
+html,body {
+    margin:0;
+    padding:0;
+    width: 100vw;
+    height: 100vh;
+    position:absolute;
+}
+=======
+>>>>>>> 135b3101ad6b2cdfbe5d0e3081f7b6a2c2c525af
 .logo{
     position: absolute;
     width: 249px;
