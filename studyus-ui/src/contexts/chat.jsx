@@ -1,65 +1,33 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import apiClient from "../services/apiClient";
+import { useGroupContext } from "./group";
 
 const ChatContext = createContext({}); // Was originally null
 
 // context to keep track of a users teams, the current team selected, and whether or not the teamModal should be displayed.
 export const ChatContextProvider = ({ children }) => {
-
+  const [groupMessages, setGroupMessages] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [members, setMembers] = useState([]);
 
-  const clearGroups = () => {
-    setMyGroups([]);
-  };
-
-  const fetchGroupMessages = async () => {
+  const fetchGroupMessages = async (groupId) => {
     setIsLoading(true);
     setError(null);
-    const { data, error } = await apiClient.fetchMessages();
+    const { data, error } = await apiClient.fetchMessages(groupId);
     if (data) {
-      setMyGroups(data.groupList);
-      if (data.groupList.length > 0) {
-        setCurrentGroup(data.groupList[0]);
-      }
+      setGroupMessages(data.chatList)
     } else if (error) {
       setError(error);
     }
     setIsLoading(false);
   };
 
-  const createGroup = async () => {
-  }
+  const postMessage = async (content) => {
+    setIsLoading(true);
+    setError(null);
+    const { data, error } = await apiClient.sendMessage();
+  };
   
-  const searchForGroups = async (query) => {
-    setIsLoading(true);
-    setError(null);
-    const { data, error } = await apiClient.searchForGroups(query);
-    if (data) {
-      setFoundGroups(data.groupList);
-      // if (data.groupList.length > 0) {
-      //   setCurrentTeam(data.teamList[0]);
-      // }
-    } else if (error) {
-      setError(error);
-    }
-    setIsLoading(false);
-  };
-
-  const leaveGroup = async (groupId, userEmail) => {
-    setIsLoading(true);
-    setError(null);
-    const { data, error } = await apiClient.leaveGroup(groupId,userEmail);
-    if (data) {
-      fetchMyGroups();
-    } else if (error) {
-      setError(error);
-    }
-    setIsLoading(false);
-  };
-
-
 
   // useEffect to fetch groups on initial load
   useEffect(() => {
@@ -74,13 +42,16 @@ export const ChatContextProvider = ({ children }) => {
   };
 
   const chatValue = {
-    // Export everything here
+    groupMessages,
+    setGroupMessages,
+    fetchGroupMessages,
+    postMessage
   };
 
   return (
-    <GroupContext.Provider value={chatValue}>
+    <ChatContext.Provider value={chatValue}>
       <>{children}</>
-    </GroupContext.Provider>
+    </ChatContext.Provider>
   );
 };
 

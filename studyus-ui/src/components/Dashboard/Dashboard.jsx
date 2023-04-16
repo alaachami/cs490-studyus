@@ -9,7 +9,7 @@ import "./Dashboard.css";
 export default function DashBoard() {
     const navigate = useNavigate();
     const { user, logoutUser } = useAuthContext();
-    const { myGroups, foundGroups, fetchMyGroups, searchForGroups, addToGroup } = useGroupContext();
+    const { myGroups, foundGroups, fetchMyGroups, searchForGroups, addToGroup, setCurrentGroup } = useGroupContext();
     const [searchText, setSearchText] = useState("");
     
     const handleSearchTextChange = (event) => {

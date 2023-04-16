@@ -9,13 +9,13 @@ import NotFound from "../NotFound/NotFound";
 import GroupForm from "../Dashboard/CreateForm/createForm";
 import { AuthContextProvider, useAuthContext } from "../../contexts/auth";
 import { GroupContextProvider, useGroupContext } from "../../contexts/group";
+import { ChatContextProvider, useChatContext } from "../../contexts/chat";
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 // import { OpenContextProvider } from "../../contexts/open";
 import { useEffect, useState } from "react";
 import apiClient from "../../services/apiClient";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
-import { ChatContextProvider } from "../../contexts/chat";
 
 export default function AppContainer() {
   return (

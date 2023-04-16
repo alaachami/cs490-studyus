@@ -14,11 +14,19 @@ class Chats {
             throw new BadRequestError(`Group id is missing!`)
         }
         // Post the chat message, with group and sender id
-        const results = await db.query(
+        /*const results = await db.query(
             `
             SELECT *
             FROM chat_messages
             WHERE (group_id = $1)
+        `, [groupId])*/
+
+        const results = await db.query(
+            `
+            SELECT chat_messages.*, users.name
+            FROM chat_messages
+            JOIN users ON chat_messages.sender_id = users.id
+            WHERE chat_messages.group_id = $1
         `, [groupId])
 
         return results.rows
