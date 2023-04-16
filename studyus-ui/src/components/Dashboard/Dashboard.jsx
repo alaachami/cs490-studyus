@@ -47,11 +47,7 @@ export default function DashBoard() {
 <<<<<<< HEAD
     <div className="group" key={group.id}>
       <Link className= "link" to={'/group/' + group.id}><h3>{group.name}</h3></Link>
-=======
-    <div key={group.id}>
-      <Link to={'/group/' + group.id}><h2>{group.name}</h2></Link>
       
->>>>>>> 135b3101ad6b2cdfbe5d0e3081f7b6a2c2c525af
       <p>{group.description}</p>
       {/* Add any other group information here */}
 
