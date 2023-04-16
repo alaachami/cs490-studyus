@@ -3,15 +3,22 @@ import "./LandingPage.css";
 import { Link } from "react-router-dom";
 
 export default function LandingPage() {
-	return (
-        <>
-        <h1>Landing page</h1>
-        <h2>
-        <Link to="/register">Click here to sign up!</Link>
-        </h2>
-        <h2>
-        <Link to="/login">Click here to log in!</Link>
-        </h2>
-        </>
-	);
+  return (
+    <div className="landing-page">
+      <h1 className="landing-page-title" style={{ fontFamily: "Inter, sans-serif" }}>
+        Join a community of motivated learners and unlock your academic potential.
+      </h1>
+      <p className="landing-page-description" style={{ fontFamily: "Inter, sans-serif" }}>
+        Collaborate with peers, share resources, and stay motivated as you work towards your goals - all from the comfort of your own home.
+      </p>
+      <div className="landing-page-buttons-container">
+        <Link to="/register" className="register-link" style={{ fontFamily: "Inter, sans-serif" }}>
+          Sign up now!
+        </Link>
+        <Link to="/login" className="login-link" style={{ fontFamily: "Inter, sans-serif" }}>
+          Log in here
+        </Link>
+      </div>
+    </div>
+  );
 }
