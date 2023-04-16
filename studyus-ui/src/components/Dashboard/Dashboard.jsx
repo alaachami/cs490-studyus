@@ -9,7 +9,7 @@ import "./Dashboard.css";
 export default function DashBoard() {
     const navigate = useNavigate();
     const { user, logoutUser } = useAuthContext();
-    const { myGroups, foundGroups, fetchMyGroups, searchForGroups, addToGroup, setCurrentGroup } = useGroupContext();
+    const { myGroups, foundGroups, fetchMyGroups, searchForGroups, addToGroup, checkIfGroupFull, fetchMembers } = useGroupContext();
     const [searchText, setSearchText] = useState("");
     
     const handleSearchTextChange = (event) => {
@@ -22,14 +22,25 @@ export default function DashBoard() {
             addToGroup(groupId, user.email);
     };
 
-  const logout = () => {
-    logoutUser();
-    navigate("/");
-  };
+    const logout = () => {
+      logoutUser();
+      navigate("/");
+    };
 
-  const handleCreateGroup = () => {
-        navigate('/groupform')
-  }
+    const handleCreateGroup = () => {
+          navigate('/groupform')
+    }
+
+    const checkGroup = () => {
+      let res = "";
+      if (checkIfGroupFull === fetchMembers.length){
+          res = "Full Group";
+      } else{
+          res = "Join Group";
+      }
+      return res;
+
+    };
 
 
   useEffect(() => {
@@ -55,7 +66,7 @@ export default function DashBoard() {
     <div key={group.id}>
       <Link to={'/groups/' + group.id}><h2>{group.name}</h2></Link>
       <p>{group.description}</p>
-      <button onClick={() => handleJoinGroup(group.id)}>Join Group</button>
+      <button onClick={() => handleJoinGroup(group.id)}>{checkGroup()}</button>
       {/* Add any other group information here */}
     </div>
   ));
