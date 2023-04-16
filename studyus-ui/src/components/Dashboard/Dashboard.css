@@ -21,6 +21,18 @@
     display: flex;
     flex-direction: row;
     background: #AF96E7;
+    cursor: pointer;
+}
+
+.functions-cont:hover::after {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-75%);
+    background-color: #AF96E7;
+    color: #FFF;
+    padding: 5px 10px;
+    border-radius: 5px;
 }
 .functions-cont img{
     vertical-align: middle;
