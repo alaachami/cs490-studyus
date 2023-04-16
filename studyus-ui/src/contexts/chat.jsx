@@ -5,16 +5,10 @@ const ChatContext = createContext({}); // Was originally null
 
 // context to keep track of a users teams, the current team selected, and whether or not the teamModal should be displayed.
 export const ChatContextProvider = ({ children }) => {
-  const [myGroups, setMyGroups] = useState([]);
-  const [foundGroups, setFoundGroups] = useState([]);
-  const [groupModal, setGroupModal] = useState(false);
-  const [currentGroup, setCurrentGroup] = useState({});
+
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [myGroupsTableData, setMyGroupsTableData] = useState([]);
-  const [ids, setIds] = useState([]);
   const [members, setMembers] = useState([]);
-  //const [tableData, setTableData] = useState([])
 
   const clearGroups = () => {
     setMyGroups([]);
