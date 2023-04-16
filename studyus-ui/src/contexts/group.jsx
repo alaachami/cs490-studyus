@@ -9,6 +9,7 @@ export const GroupContextProvider = ({ children }) => {
   const [foundGroups, setFoundGroups] = useState([]);
   const [groupModal, setGroupModal] = useState(false);
   const [currentGroup, setCurrentGroup] = useState({});
+  const [currentGroupId, setCurrentGroupId] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [myGroupsTableData, setMyGroupsTableData] = useState([]);
@@ -171,6 +172,8 @@ export const GroupContextProvider = ({ children }) => {
     leaveGroup,
     setFoundGroups,
     clearGroupContext,
+    currentGroupId,
+    setCurrentGroupId
   };
 
   return (
