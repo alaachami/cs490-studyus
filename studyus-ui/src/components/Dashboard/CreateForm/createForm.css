@@ -1,75 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+
 .create-group {
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #f8f8f8;
-    border-radius: 5px;
-  }
-  
-  .create-group h2 {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 20px;
-    color: #333;
-  }
-  
-  .form {
-    margin-bottom: 20px;
-  }
-  
-  .input-field {
-    margin-bottom: 15px;
-  }
-  
-  .label {
-    display: block;
-    font-size: 14px;
-    font-weight: bold;
-    margin-bottom: 5px;
-    color: #555;
-  }
-  
-  .form-input {
-    width: 100%;
-    padding: 8px;
-    font-size: 14px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-    outline: none;
-  }
-  
-  textarea.form-input {
-    resize: vertical;
-  }
-  
-  .error {
-    font-size: 14px;
-    color: #f00;
-    margin-top: -10px;
-    margin-bottom: 15px;
-  }
-  
-  .submit-form {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    font-size: 16px;
-    font-weight: bold;
-    color: #fff;
-    background-color: #007bff;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-    outline: none;
-    transition: background-color 0.3s ease;
-  }
-  
-  .submit-form:hover {
-    background-color: #0056b3;
-  }
-  
-  .submit-form:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-  }
-  
+  display: flex;
+  font-family: 'Inter', sans-serif;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: linear-gradient(
+      0deg,
+      rgba(127, 86, 218, 0.7),
+      rgba(127, 86, 218, 0.7)
+    ),
+    url(https://images.unsplash.com/photo-1585832770485-e68a5dbfad52?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3160&q=80);
+  background-position: center;
+  background-size: cover;
+}
+
+.create-group h2 {
+  font-size: 28px;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.form {
+  width: 80%;
+  max-width: 600px;
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 8px;
+}
+
+.input-field {
+  margin-bottom: 20px;
+}
+
+.label {
+  font-size: 16px;
+  color: #333;
+}
+
+.form-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  color: #333;
+}
+
+.textarea {
+  resize: none;
+  height: 100px;
+}
+
+.error {
+  font-size: 14px;
+  color: #f00;
+  margin-top: -10px;
+  margin-bottom: 10px;
+}
+
+.submit-form {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  background-color: #7f56da;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-form:hover {
+  background-color: #6b4cbf;
+}
+
+.submit-form:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
