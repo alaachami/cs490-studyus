@@ -44,7 +44,6 @@ export default function DashBoard() {
   }, []);
 
   const renderedMyGroups = myGroups && myGroups.map((group) => (
-<<<<<<< HEAD
     <div className="group" key={group.id}>
       <Link className= "link" to={'/group/' + group.id}><h3>{group.name}</h3></Link>
       
