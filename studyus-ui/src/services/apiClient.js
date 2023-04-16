@@ -69,8 +69,13 @@ class ApiClient {
     console.log("addMemberToGroup groupId: " + groupId)
     return await this.request({ endpoint: `group/add`, method: 'POST',  data: {email: memberToAdd, groupId: groupId} })
   }
+  async leaveGroup( groupId, userEmail ){
+    console.log(userEmail)
+    return await this.request({ endpoint: `group/remove`, method: 'POST',  data: {groupId: groupId, email: userEmail } })
+  }
   //function to get an array of users who are a part of a specific group
   async fetchMemberList(groupId){
+    console.log("fetchMemberList results: ", /*JSON.stringify(*/ await this.request({endpoint: `group/${groupId}/members`, method: 'GET' }))/*)*/;
     return await this.request({endpoint: `group/${groupId}/members`, method: 'GET' })
   }
   // function to search for group given search query
