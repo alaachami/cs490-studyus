@@ -83,15 +83,34 @@ router.get("/:groupId", security.requireAuthenticatedUser, async (req, res, next
 
 
 //FUNCTION TO ADD A NEW MEMBER TO A GROUP
-router.post("/:groupId/add", security.requireAuthenticatedUser, async (req, res, next) => {
+router.post("/add", security.requireAuthenticatedUser, async (req, res, next) => {
     try {
         //Retrieve the team id from the given url
-        const { groupId } = req.params
+        const { groupId } = req.body
         //Retrieve the user information from the local server
         const { user } = res.locals
         //Call the addNewTeamMember function to update the members of a team
         //Request body must have the new member's email; If not, the request will be unsuccessful
         const updatedGroup = await Groups.addNewGroupMember({ groupId: groupId, newMember: req.body, user: user })
+
+        //Return the new team information if successful
+        return res.status(200).json({ group: updatedGroup })
+    }
+    catch (error) {
+        next(error)
+    }
+})
+
+//FUNCTION REMOVE MEMBER FROM A GROUP
+router.post("/remove", security.requireAuthenticatedUser, async (req, res, next) => {
+    try {
+        //Retrieve the team id from the given url
+        const { groupId } = req.body
+        //Retrieve the user information from the local server
+        const { user } = res.locals
+        //Call the addNewTeamMember function to update the members of a team
+        //Request body must have the new member's email; If not, the request will be unsuccessful
+        const updatedGroup = await Groups.leaveGroup({ groupId: groupId, user: user })
 
         //Return the new team information if successful
         return res.status(200).json({ group: updatedGroup })
