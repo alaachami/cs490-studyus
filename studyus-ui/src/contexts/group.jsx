@@ -9,11 +9,13 @@ export const GroupContextProvider = ({ children }) => {
   const [foundGroups, setFoundGroups] = useState([]);
   const [groupModal, setGroupModal] = useState(false);
   const [currentGroup, setCurrentGroup] = useState({});
+  const [currentGroupId, setCurrentGroupId] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [myGroupsTableData, setMyGroupsTableData] = useState([]);
   const [ids, setIds] = useState([]);
   const [members, setMembers] = useState([]);
+
   //const [tableData, setTableData] = useState([])
 
   const clearGroups = () => {
@@ -81,6 +83,7 @@ export const GroupContextProvider = ({ children }) => {
     setIsLoading(false);
   };
 
+
   
 
   // useEffect to fetch groups on initial load
@@ -111,6 +114,23 @@ export const GroupContextProvider = ({ children }) => {
       console.log(data.groupData)
       setMembers(data.groupData)
       console.log("fetchGroupMembers member list: " + members)
+    } else if (error) {
+      setError(error);
+    }
+    setIsLoading(false);
+  };
+
+  const checkIfGroupFull = async (groupId) => {
+    console.log("Checking Capacity..")
+    console.log("Group ID: " + groupId)
+    setIsLoading(true);
+    setError(null);
+    console.log("Before apiClient.checkIfGroupFull")
+    const { data, error } = await apiClient.checkIfGroupFull(groupId);
+    console.log("After apiClient.checkIfGroupFull")
+    console.log(data.capacity)
+    if (data) {
+      console.log(data.capacity)
     } else if (error) {
       setError(error);
     }
@@ -148,9 +168,12 @@ export const GroupContextProvider = ({ children }) => {
     clearGroups,
     //getData,
     foundGroups,
+    checkIfGroupFull,
     leaveGroup,
     setFoundGroups,
     clearGroupContext,
+    currentGroupId,
+    setCurrentGroupId
   };
 
   return (

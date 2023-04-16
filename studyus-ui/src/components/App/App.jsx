@@ -9,6 +9,7 @@ import NotFound from "../NotFound/NotFound";
 import GroupForm from "../Dashboard/CreateForm/createForm";
 import { AuthContextProvider, useAuthContext } from "../../contexts/auth";
 import { GroupContextProvider, useGroupContext } from "../../contexts/group";
+import { ChatContextProvider, useChatContext } from "../../contexts/chat";
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 // import { OpenContextProvider } from "../../contexts/open";
@@ -20,7 +21,9 @@ export default function AppContainer() {
   return (
     <AuthContextProvider>
       <GroupContextProvider>
-        <App />
+        <ChatContextProvider>
+          <App />
+        </ChatContextProvider>
       </GroupContextProvider>
     </AuthContextProvider>
   );

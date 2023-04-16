@@ -9,7 +9,7 @@ import "./Dashboard.css";
 export default function DashBoard() {
     const navigate = useNavigate();
     const { user, logoutUser } = useAuthContext();
-    const { myGroups, foundGroups, fetchMyGroups, searchForGroups, addToGroup } = useGroupContext();
+    const { myGroups, foundGroups, fetchMyGroups, searchForGroups, addToGroup, checkIfGroupFull, fetchMembers } = useGroupContext();
     const [searchText, setSearchText] = useState("");
     
     const handleSearchTextChange = (event) => {
@@ -22,14 +22,25 @@ export default function DashBoard() {
             addToGroup(groupId, user.email);
     };
 
-  const logout = () => {
-    logoutUser();
-    navigate("/");
-  };
+    const logout = () => {
+      logoutUser();
+      navigate("/");
+    };
 
-  const handleCreateGroup = () => {
-        navigate('/groupform')
-  }
+    const handleCreateGroup = () => {
+          navigate('/groupform')
+    }
+
+    const checkGroup = () => {
+      let res = "";
+      if (checkIfGroupFull === fetchMembers.length){
+          res = "Full Group";
+      } else{
+          res = "Join Group";
+      }
+      return res;
+
+    };
 
 
   useEffect(() => {
@@ -45,12 +56,9 @@ export default function DashBoard() {
 
   const renderedMyGroups = myGroups && myGroups.map((group) => (
     <div className="group" key={group.id}>
-      <Link className= "link" to={'/group/' + group.id}><h3>{group.name}</h3></Link>
-      
+      <Link className= "link" to={'/group/' + group.id}><h5>{group.name}-{group.subject}</h5></Link>
       <p>{group.description}</p>
       {/* Add any other group information here */}
-
-      
     </div>
   ));
   
@@ -58,7 +66,7 @@ export default function DashBoard() {
     <div key={group.id}>
       <Link to={'/groups/' + group.id}><h2>{group.name}</h2></Link>
       <p>{group.description}</p>
-      <button onClick={() => handleJoinGroup(group.id)}>Join Group</button>
+      <button onClick={() => handleJoinGroup(group.id)}>{checkGroup()}</button>
       {/* Add any other group information here */}
     </div>
   ));
@@ -82,9 +90,10 @@ export default function DashBoard() {
           </div>
           <div className="main">
             <div className="search-area">
+            <h3>Find New Group</h3>
               <input type="text" onChange={handleSearchTextChange} placeholder="Search for groups" />
             </div>
-          {foundGroups[0] && searchText.length > 0 ? renderedFoundGroups : <h3>Search For Group</h3>}
+          {foundGroups[0] && searchText.length > 0 ? renderedFoundGroups : <h3></h3>}
         </div>
         </div>
     </div>

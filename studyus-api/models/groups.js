@@ -22,12 +22,6 @@ class Groups
         return results.rows
     }
 
-
-
-
-
-
-
     //FUNCTION TO CREATE A NEW group FOR THE USER
     //Takes in only the name of the group, members, and projects associated with the group
     //And then inserts the results of the query into the database
@@ -97,11 +91,6 @@ class Groups
         return results.rows[0]
     }
 
-
-
-
-
-
     //FUNCTION TO RETURN A SPECIFIC group GIVEN THE group'S ID
     static async fetchGroupById({groupId, user})
     {
@@ -133,12 +122,6 @@ class Groups
         return group
     }
 
-
-
-
-    
-
-
     //FUNCTION TO ADD A NEW group MEMBER TO AN EXISTING group. Uses their email as a parameter
     static async addNewGroupMember({groupId, newMember, user})
     {
@@ -154,6 +137,14 @@ class Groups
         //Run a separate query to determine whether the new member already exists within the members of the chosen group
         const existingMember = await Groups.checkExistingMember(newMemberId, groupId)
 
+        const memberCount = await Groups.fetchMembersCountForAGroup(groupId)
+        const capacity = await Groups.checkGroupCapacity(groupId)
+        console.log("Members length: " + memberCount)
+        console.log("Group Capacity:" + capacity)
+
+        if (memberCount >= capacity) {
+            throw new BadRequestError(`Group capacity exceeded! Cannot add new member.`);
+        }
 
         //If the new member already exists within the members of a chosen group, throw a bad request error detailing duplicate member
         if(existingMember)
@@ -180,10 +171,6 @@ class Groups
             VALUES($1, $2, $3)
             RETURNING group_id, member_id, is_admin
         `, [groupId, newMemberId, false])
-
-        const memberCount = await Groups.fetchMembersForAGroup(groupId, user)
-        console.log(memberCount)
-        console.log("MemberCount.length: " + memberCount.length)
 
         //Store the results of the new group information
         //If user is not authorized to change the group information or the groupId is not found or the array can not be updated
@@ -304,10 +291,6 @@ class Groups
         return results.rows[0].is_admin;
     }
     
-
-
-
-
     //FUNCTION TO CHECK WHETHER THE GIVEN USER ALREADY EXISTS AS A MEMBER IN THE group
     static async checkExistingMember(memberId, groupId)
     {
@@ -330,10 +313,6 @@ class Groups
         //If a member is found, return the information. If they are not a member, return nothing.
         return results.rows[0]
     }
-
-
-
-
 
     //FUNCTION TO RETURN AN ARRAY OF USERS FROM A group
     static async fetchMembersForAGroup(groupId, user)
@@ -397,7 +376,40 @@ class Groups
         return results.rows
     }
 
+    static async fetchMembersCountForAGroup(groupId) {
+        // Run a query to fetch the member count for the given group ID
+        const result = await db.query(
+            `
+            SELECT COUNT(*) as member_count
+            FROM group_members
+            WHERE group_id = $1
+            `, [groupId]
+        );
     
+        // Extract and return the member count from the query result
+        const memberCount = result.rows[0].member_count;
+        return memberCount;
+    }
+
+    static async checkGroupCapacity(groupId) 
+    {
+        // Run a query to fetch the capacity of the group from the groups table
+        const result = await db.query(
+        `
+        SELECT capacity
+        FROM groups
+        WHERE id = $1
+        `,
+        [groupId]
+        );
+
+        // If the group is found, return the capacity, otherwise throw a not found error
+        if (result.rows.length > 0) {
+        return result.rows[0].capacity;
+        } else {
+        throw new NotFoundError(`Group with id ${groupId} not found!`);
+        }
+    }
 
     /*
     //FUNCTION TO RETURN AN ARRAY OF PROJECTS THAT A group HAS
@@ -424,10 +436,6 @@ class Groups
 
 
     */
-
-
-
-
 
     /*
     //FUNCTION TO GET THE group ID, NAME, AND NAMES OF MEMBERS FOR MULTIPLE groupS

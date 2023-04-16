@@ -78,16 +78,26 @@ class ApiClient {
     console.log("fetchMemberList results: ", /*JSON.stringify(*/ await this.request({endpoint: `group/${groupId}/members`, method: 'GET' }))/*)*/;
     return await this.request({endpoint: `group/${groupId}/members`, method: 'GET' })
   }
+  async checkGroupCapacity(groupId){
+    console.log("Group Capacity: ", /*JSON.stringify(*/ await this.request({endpoint: `group/${groupId}/capacity`, method: 'GET' }))/*)*/;
+    return await this.request({endpoint: `group/${groupId}/capacity`, method: 'GET' })
+  }
+
   // function to search for group given search query
   async searchForGroups(query){
     return await this.request({ endpoint: `group/search`, method: 'POST', data: {query: query} })
   }
 
-  /* Gets all the team members from multiple teams. Pass in array of all team ids we want to do this for
-  async fetchTeamMembers(teamIds) {
-    return await this.request({endpoint: `team/teams/users`, method: 'GET', data: {teamIds}})
-  }*/
+  // ------------------------ chat requests ------------------------
 
+  // function to get all messages given a group id
+  async fetchMessages(groupId){
+    return await this.request({ endpoint: `chat/fetch`, method: 'POST', data: {groupId: groupId} })
+  }
+  // function to send message given a group/sender id, and the message
+  async sendMessage(groupId, senderId, message){
+    return await this.request({endpoint: `chat/send`, method: 'POST', data: {groupId: groupId, senderId: senderId, message: message}})
+  }
 }
 
 // export default new ApiClient(API_BASE_URL || "http://localhost:3001")

@@ -3,8 +3,10 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useGroupContext } from "../../contexts/group";
 import { useAuthContext } from "../../contexts/auth";
 import "./GroupPage.css";
+import { useChatContext } from "../../contexts/chat";
 
 export default function GroupPage() {
+  const { groupMessages, fetchGroupMessages, sendMessage } = useChatContext();
   const { members, setMembers, fetchMembers, leaveGroup } = useGroupContext();
   const { user } = useAuthContext();
   const { id } = useParams();
@@ -26,6 +28,14 @@ export default function GroupPage() {
         </div>
       </div>
     ));
+    
+  const renderedMessages = groupMessages && groupMessages.map((message) => (
+      <div className="message" key={message.id}>
+              <p className="sender-name">{message.name}</p>
+              <p className="timestamp">{message.timestamp}</p>
+              <p className="content">{message.message}</p>
+      </div>
+  ));
 
   useEffect(() => {
     // This effect runs whenever members changes
@@ -34,6 +44,7 @@ export default function GroupPage() {
   // useEffect to fetch groups on initial load
   useEffect(() => {
     fetchMembers(id);
+    fetchGroupMessages(id)
   }, []);
 
   return (
@@ -50,6 +61,8 @@ export default function GroupPage() {
       </div>
 
       <div className="members-cont">{renderedMembers}</div>
+      <div className="messages-cont">{renderedMessages}</div>
     </>
   );
+
 }

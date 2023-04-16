@@ -58,8 +58,10 @@
     width: 50%;
 }
 .main{
+    flex:1 0 0;
     top: 85px;
-    width: auto;
+    width: 70%;
+    padding-left: 20px;
     text-align: left;
     font-family: 'Inter';
     font-style: normal;
@@ -73,16 +75,36 @@
     display:flex;
     flex-direction: column;
     position: relative;
+    padding: 0px;
     margin: 0px;
-    background: #DFDFDF
+    background: #DFDFDF;
+    overflow-y: scroll;
 }
 
 .group{
+    flex: 1,0,0;
     padding-left: 20px;
+    padding-top: 1px;
     font-family: Inter;
-    color: white;
+    color: #160020;
     font-weight: 400;
     font-size: 18px;
+    height: auto;
+    max-height: 150px;
+}
+
+.group:after {
+    content: ""; /* This is necessary for the pseudo element to work. */ 
+    display: inline-block; /* This will put the pseudo element on its own line. */
+    margin: 0, auto; /* This will center the border. */
+    width: 90%; /* Change this to whatever width you want. */
+    padding-top: 3px; /* This creates some space between the element and the border. */
+    border-bottom: 1px solid black;
+    padding-bottom: 3px;
+}
+
+.group:hover{
+    background-color: #aba8a8;
 }
 
 .link{
@@ -94,6 +116,27 @@
 .group-cont h2 {
     color: #6D73B0;
     font-weight: 80px;
-    padding: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+    width: 50%;
+    border: #6D73B0 3px solid;
+    border-radius: 25px;
     font-family: Inter;
+}
+.group p{
+    font-size: 14px;
+    line-height: 1em;
+    max-height: 3em;
+    padding-right: 20px;
+    width: 200px;
+    display:block;
+    word-wrap: break-word;
+    overflow: hidden;
+    text-align: justify;
+    white-space: wrap;
+
 }
