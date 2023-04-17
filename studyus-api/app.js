@@ -10,6 +10,7 @@ const security = require('./middleware/security')
 const authRoutes = require('./routes/auth')
 const groupRoutes = require('./routes/group')
 const chatRoutes = require('./routes/chat')
+const callRoutes = require('./routes/call')
 
 //Create Express Application
 const app = express()
@@ -24,6 +25,7 @@ app.use(security.extractUserFromJwt)
 app.use("/auth", authRoutes)
 app.use("/group", groupRoutes)
 app.use("/chat", chatRoutes)
+app.use("/call", callRoutes)
 
 //Server Health Check
 app.get('/', async(req,res,next) => {
