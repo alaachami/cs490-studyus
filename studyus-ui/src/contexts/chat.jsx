@@ -1,40 +1,49 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import apiClient from "../services/apiClient";
-import { useGroupContext } from "./group";
+import { useParams } from "react-router-dom"; 
+import { useAuthContext } from "./auth";
 
-const ChatContext = createContext({}); // Was originally null
+const ChatContext = createContext({});
 
 // context to keep track of a users teams, the current team selected, and whether or not the teamModal should be displayed.
 export const ChatContextProvider = ({ children }) => {
   const [groupMessages, setGroupMessages] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+  const { id } = useParams();
+  const { user} = useAuthContext();
+  const userId = user.id;
 
   const fetchGroupMessages = async (groupId) => {
     setIsLoading(true);
     setError(null);
-    const { data, error } = await apiClient.fetchMessages(groupId);
-    if (data) {
-      setGroupMessages(data.chatList)
-    } else if (error) {
+    try {
+      const { data } = await apiClient.fetchMessages(groupId);
+      setGroupMessages(data.chatList);
+    } catch (error) {
       setError(error);
     }
     setIsLoading(false);
   };
 
-  const postMessage = async (content) => {
+  const postMessage = async (id, userId, content ) => {
     setIsLoading(true);
     setError(null);
-    const { data, error } = await apiClient.sendMessage();
+    try {
+      const { data } = await apiClient.sendMessage(id, userId, content);
+      if (data) { 
+        fetchGroupMessages(id);
+      }
+    } catch (error) {
+      setError(error);
+    }
+    setIsLoading(false);
   };
-  
 
   // useEffect to fetch groups on initial load
   useEffect(() => {
     fetchGroupMessages();
-    setIsLoading(false);
-  }, []); 
-
+  }, []);
 
   const clearChatContext = () => {
     setIsLoading(false);
@@ -45,7 +54,10 @@ export const ChatContextProvider = ({ children }) => {
     groupMessages,
     setGroupMessages,
     fetchGroupMessages,
-    postMessage
+    postMessage,
+    isLoading,
+    error,
+    clearChatContext
   };
 
   return (

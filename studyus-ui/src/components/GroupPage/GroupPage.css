@@ -3,16 +3,16 @@
     height: 85px;
     left: 248px;
     top: 0px;
-    background: #AF96E7; 
+    background: #AF96E7;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-  }
+}
 
-  .functions-cont{
+.functions-cont {
     border: #DFDFDF solid 2px;
-    border-radius:35px;
+    border-radius: 35px;
     padding-left: 10px;
     padding-right: 10px;
-    position:absolute;
+    position: absolute;
     left: 70vw;
     top: 25px;
     height: 30px;
@@ -42,62 +42,159 @@
     display: block;
 }
 
-  
-  .members-cont {
+.members-cont {
     display: flex;
     flex-direction: column;
     position: absolute;
     width: 249px;
-    height: 100%;
+    height: calc(100vh - 85px);
     left: 0px;
     top: 85px;
     background: linear-gradient(#F3F3F3, #ECECEC);
     border-radius: 5px;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-  }
-  
-  .member {
+}
+
+.member {
     display: flex;
     flex-direction: row;
     align-items: center;
     padding: 10px;
     border-bottom: 1px solid #DADADA;
     position: relative;
-  }
-  
-  .member-p {
+}
+
+.member-p {
     width: 45px;
     height: 45px;
     border-radius: 50%;
     margin-right: 10px;
     object-fit: cover;
-  }
-  
-  .member-name {
+}
+
+.member-name {
     width: fit-content;
     font-weight: bold;
     color: #555;
     margin-right: 10px;
-  }
-  
-  .member-role {
+}
+
+.member-email {
     width: fit-content;
     color: #777;
     font-size: 12px;
-  }
-  
-  .member-divider {
+}
+
+.member-divider {
     position: absolute;
     width: 162px;
     height: 9px;
     left: 55px;
     background: #BDBDBD;
-  }
-  
-  .member-divider:nth-child(2) {
+}
+
+.member-divider:nth-child(2) {
     top: 18px;
-  }
-  
-  .member-divider:nth-child(3) {
+}
+
+.member-divider:nth-child(3) {
     top: 35px;
+}
+
+.messages-cont {
+    margin-top: 30px;
+    display: flex;
+}
+
+.messages-container {
+    background-color: #f3f3f3;
+    padding: 20px;
+    border-radius: 5px;
+    position: absolute;
+    left: 248.99px;
+    top: 85px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    overflow-x: hidden;
+    width: calc(100vw - 248.99px);
+    height: calc(100vh - 165px); /* Set maximum height to the viewport height minus 165px (to account for the top bar and message input form) */
+    
   }
+
+
+
+.message {
+    margin-bottom: 10px;
+}
+
+.sender-name {
+    font-size: 15px;
+    font-weight: bold;
+    color: #333;
+    margin-right: 10px;
+}
+
+.timestamp {
+    font-size: 10px;
+    color: #777;
+}
+
+.content {
+    font-size: 15px;
+    color: black;
+}
+
+.message-form {
+    flex: 1;
+    position: fixed;
+    bottom: 0;
+    left: 249px;
+    right: 0;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 20px;
+    background-color: #f3f3f3; /* Set background color to match messages container */
+    z-index: 1; /* Set z-index to 1 to ensure it's above the messages container */
+  }
+
+  .message-input {
+    height: 40px;
+    padding: 10px;
+    border: none;
+    border-radius: 20px;
+    background-color: #fff;
+    font-size: 14px;
+    color: #333;
+    flex: 1;
+  }
+
+  .message-header {
+    display: flex; /* Use flexbox to display sender's name and timestamp on the same line */
+    align-items: center; /* Vertically align items in the center */
+    margin-bottom: 4px; /* Add some bottom margin for spacing */
+  }
+    
+    .send-button {
+    height: 40px;
+    width: 60px;
+    margin-left: 10px;
+    border: none;
+    border-radius: 20px;
+    background-color: #AF96E7;
+    color: #fff;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    }
+    
+    .send-button:hover {
+    background-color: #9E86D3;
+    }
+
+    .divider {
+        margin: 10px 0; /* Adjust spacing as needed */
+        border: 0;
+        border-top: 1px solid #c4c0c0; /* Adjust color as needed */
+      }
+    
