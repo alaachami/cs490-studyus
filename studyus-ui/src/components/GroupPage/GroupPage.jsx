@@ -8,14 +8,12 @@ import { useChatContext } from "../../contexts/chat";
 // Exporting the GroupPage component
 export default function GroupPage() {
   const { groupMessages, fetchGroupMessages, postMessage} = useChatContext();
-  const { members, setMembers, fetchMembers, leaveGroup, fetchGroupById } = useGroupContext();
+  const { members, setMembers, fetchMembers, leaveGroup, fetchGroupById, groupName, setGroupName } = useGroupContext();
   const { user } = useAuthContext();
   const { id } = useParams();
   const navigate = useNavigate();
   // Initializing state for newMessage and setNewMessage using useState() hook
   const [newMessage, setNewMessage] = useState("");
-  // Initializing state for groupName and setgroupName using useState() hook
-  const [groupName, setgroupName] = useState("");
 
   // Defining handleLeaveGroup function with id and user parameters
   // Calling leaveGroup function with id and user.email arguments
@@ -26,10 +24,16 @@ export default function GroupPage() {
   };
 
   // Defining getGroupName function with id parameter
-  const getGroupName = (id) => { 
-        console.log("GROUPPP: "+ fetchGroupById(id)); 
+  const getGroupName = async (id) => { 
+        /*console.log("GROUPPP: "+ fetchGroupById(id)); 
         // Setting groupName state with the name property of the result of fetchGroupById(id) function call
-        setgroupName(fetchGroupById(id).name); 
+        setgroupName(fetchGroupById(id).name); */
+        try {
+          const group = await fetchGroupById(id);
+          setgroupName(group);
+        } catch (error) {
+          // handle error
+        }
       };
   // Rendering members
   // Mapping through members array and rendering JSX for each member    
@@ -107,7 +111,8 @@ export default function GroupPage() {
 
   // useEffect to fetch groups on initial load
   useEffect(() => {
-    getGroupName(id);
+    //getGroupName(id);
+    fetchGroupById(id);
     fetchMembers(id);
     fetchGroupMessages(id);
   }, []);
