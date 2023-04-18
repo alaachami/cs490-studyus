@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useGroupContext } from "../../contexts/group";
 import { useAuthContext } from "../../contexts/auth";
@@ -7,6 +7,8 @@ import { useChatContext } from "../../contexts/chat";
 
 // Exporting the GroupPage component
 export default function GroupPage() {
+  // Create a ref for the messages container element
+  const messagesContainerRef = useRef(null); 
   const { groupMessages, fetchGroupMessages, postMessage} = useChatContext();
   const { members, setMembers, fetchMembers, leaveGroup, fetchGroupById, groupName, setGroupName } = useGroupContext();
   const { user } = useAuthContext();
@@ -86,7 +88,7 @@ export default function GroupPage() {
         <hr className="divider" />
       </div>
     );
-  }).reverse();
+  });
 
   // handles posting messages
     const handleSendMessage = () => {
@@ -97,17 +99,25 @@ export default function GroupPage() {
       };
       // handels enter press to send chat
       const handleKeyPress = (e) => {
-        if (e.key === "Enter") {
+       if (e.key === "Enter") {
           // Prevent page refresh
           e.preventDefault(); 
           handleSendMessage();
-        }
-      };
+          }
+        };
       
 
   useEffect(() => {
     // This effect runs whenever members changes
   }, []);
+
+  useEffect(() => {
+    // This effect runs whenever new message changes
+    if (messagesContainerRef.current) {
+      messagesContainerRef.current.scrollTop = messagesContainerRef.current.scrollHeight;
+    }
+
+  }, [postMessage, newMessage]);
 
   // useEffect to fetch groups on initial load
   useEffect(() => {
@@ -137,7 +147,7 @@ export default function GroupPage() {
 
       <div className="members-cont">{renderedMembers}</div>
       
-        <div className="messages-container">
+        <div className="messages-container" ref={messagesContainerRef}>
           {renderedMessages}
           <form className="message-form">
                 <input
