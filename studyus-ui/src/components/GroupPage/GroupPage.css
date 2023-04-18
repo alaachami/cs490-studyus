@@ -107,7 +107,7 @@
 }
 
 .messages-container {
-    background-color: #f3f3f3;
+    background-color: linear-gradient(#F3F3F3, #ECECEC);
     padding: 20px;
     border-radius: 5px;
     position: absolute;
@@ -117,7 +117,8 @@
     overflow-x: hidden;
     width: calc(100vw - 248.99px);
     height: calc(100vh - 165px); /* Set maximum height to the viewport height minus 165px (to account for the top bar and message input form) */
-    
+    display: flex;
+    flex-direction: column;
   }
 
 

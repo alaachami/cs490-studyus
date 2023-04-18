@@ -67,7 +67,7 @@ export default function GroupPage() {
         <hr className="divider" />
       </div>
     );
-  });
+  }).reverse();
 
 
     const handleSendMessage = () => {
