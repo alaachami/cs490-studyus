@@ -100,5 +100,10 @@ class ApiClient {
   }
 }
 
+// ------------------------- call requests ----------------------
+
+// function to create new call
+//async startCall()
+
 // export default new ApiClient(API_BASE_URL || "http://localhost:3001")
 export default new ApiClient(API_BASE_URL)
