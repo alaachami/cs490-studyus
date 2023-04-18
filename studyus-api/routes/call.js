@@ -10,14 +10,15 @@ const bearer = process.env.DAILYCO_API_KEY
 router.post('/create', async (req, res, next) => {
 
     const { name } = req.body
-
+    const expiryTimeInSeconds = 3600; // or any other value in seconds
 
     try {
       const body = {
         name: name,
         properties: {
           autojoin: true,
-          enable_knocking: true
+          enable_knocking: true,
+          exp: Math.floor((Date.now() / 1000) + expiryTimeInSeconds)
         },
         privacy: 'public'
       };
