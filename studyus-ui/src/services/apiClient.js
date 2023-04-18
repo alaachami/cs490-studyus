@@ -99,12 +99,23 @@ class ApiClient {
   async sendMessage(groupId, senderId, message){
     return await this.request({endpoint: `chat/send`, method: 'POST', data: {groupId: groupId, senderId: senderId, message: message}})
   }
+
+  // ------------------------- call requests ----------------------
+
+
+  // Function to start a call 
+  async startCall(name) {
+    return await this.request({endpoint: `call/create`, method: 'POST', data: {name}});
+  }
+  
+  async endCall(name) {
+    return await this.request({endpoint: `call/delete`, method: 'POST', data: {name}});
+  }
+
+
 }
 
-// ------------------------- call requests ----------------------
 
-// function to create new call
-//async startCall()
 
 // export default new ApiClient(API_BASE_URL || "http://localhost:3001")
 export default new ApiClient(API_BASE_URL)

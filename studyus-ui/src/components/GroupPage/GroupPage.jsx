@@ -2,15 +2,27 @@ import React, { useEffect, useState, useRef } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useGroupContext } from "../../contexts/group";
 import { useAuthContext } from "../../contexts/auth";
+import { useCallContext } from "../../contexts/call";
 import "./GroupPage.css";
 import { useChatContext } from "../../contexts/chat";
 
 // Exporting the GroupPage component
 export default function GroupPage() {
   // Create a ref for the messages container element
-  const messagesContainerRef = useRef(null); 
-  const { groupMessages, fetchGroupMessages, postMessage} = useChatContext();
-  const { members, setMembers, fetchMembers, leaveGroup, fetchGroupById, groupName, setGroupName } = useGroupContext();
+  const messagesContainerRef = useRef(null);
+  const { groupMessages, fetchGroupMessages, postMessage } = useChatContext();
+  const {
+    members,
+    setMembers,
+    fetchMembers,
+    leaveGroup,
+    fetchGroupById,
+    groupName,
+    setGroupName,
+    setCallUrl,
+    link,
+    setlink,
+  } = useGroupContext();
   const { user } = useAuthContext();
   const { id } = useParams();
   const navigate = useNavigate();
@@ -105,6 +117,15 @@ export default function GroupPage() {
           handleSendMessage();
           }
         };
+    
+      const handleCall = async (id , user) => { 
+          // Call setCallUrl function and wait for the result
+          console.log(user.id);
+          const url = await setCallUrl(String(user.id));
+          console.log(url)
+          postMessage(id, user.id, `${user.name} started a call, follow this link: ${url}`);
+        
+    }
       
 
   useEffect(() => {
@@ -142,6 +163,15 @@ export default function GroupPage() {
             width="20"
           ></img>
           <span className="leave-group-msg">Leave Group</span>
+
+          <img
+            src="https://img.icons8.com/ios/512/exit--v1.png"
+            onClick={() => handleCall(id, user)}
+            height="20"
+            width="20"
+          ></img>
+          <span className="leave-group-msg">Start Call</span>
+
         </div>
       </div>
 
