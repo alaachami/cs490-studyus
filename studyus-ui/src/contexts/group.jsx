@@ -16,6 +16,7 @@ export const GroupContextProvider = ({ children }) => {
   const [ids, setIds] = useState([]);
   const [members, setMembers] = useState([]);
   const [groupName, setGroupName] = useState("");
+  const [link, setlink] = useState("");
 
   //const [tableData, setTableData] = useState([])
 
@@ -116,6 +117,19 @@ export const GroupContextProvider = ({ children }) => {
     return groupIds;
   };
 
+  const setCallUrl = async (name) => {
+    setIsLoading(true);
+    setError(null);
+    const { data } = await apiClient.startCall(name);
+    if (data){
+      console.log(data.url)
+        return data.url
+    } else if (error) {
+        setError(error);
+    }
+    setIsLoading(false);
+  };
+
   const fetchMembers = async (groupId) => {
     console.log("Fetchgroupmembers running...")
     console.log("fetchMembers groupid: " + groupId)
@@ -171,6 +185,7 @@ export const GroupContextProvider = ({ children }) => {
     addToGroup,
     members,
     setMembers,
+    setCallUrl,
     fetchMembers,
     //fetchMyGroupsTableData,
     searchForGroups,
@@ -191,6 +206,8 @@ export const GroupContextProvider = ({ children }) => {
     currentGroupId,
     setCurrentGroupId,
     groupName,
+    link,
+    setlink,
     setGroupName
   };
 
