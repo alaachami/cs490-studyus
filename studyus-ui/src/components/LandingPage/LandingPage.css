@@ -71,3 +71,368 @@
 .login-link:hover {
   background-color: #6e49b7;
 }
+
+/* .landing-page {
+  background: linear-gradient(0deg, rgba(127, 86, 218, 0.7), rgba(127, 86, 218, 0.7)),
+              url(https://s3-alpha-sig.figma.com/img/e82c/b787/0365d29c6f88d16a242936d4b304e816?Expires=1682294400&Signature=XncPRRT5XNSI50IikWW~xD9kUTvSngIM5gNHQQyP4Cu2LL7TjuxFRjhcNo5s1rutDftC5h1bi4zUmHWn86UdHcOvjP2fbcGUrlPDe385aOJb7N2QWM8mTwtBXr~eg3DubWAfObGt52yKXjlbn87cEfKse2SuOAAkSH2hc8iJLCp9GFrbNfr3IhggtJhyMUrFAtFw2~19FdxNnT8mvXdmXB821wcOsb3nsNv3y2db3h8sJSMUA3~htYUASg3KZmdm1OA54hSOJONisWl8zFhLg4V1dGPVqmnAAPNkKkiYs1unncbPqQRwUELLzMJnOn47Z5T1BZJTozRYKqVDD1S7BA__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4);
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.landing-page-title {
+  font-size: 4rem;
+  font-weight: bold;
+  color: #fff;
+  margin-top: 2rem;
+}
+
+.landing-page-description {
+  font-size: 1.5rem;
+  color: #fff;
+  margin-top: 1rem;
+  max-width: 800px;
+  line-height: 1.5;
+}
+
+.landing-page-link {
+  margin-top: 2rem;
+}
+
+.register-link,
+.login-link {
+  display: inline-block;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #fff;
+  padding: 1rem 2rem;
+  background-color: #7f56da;
+  border: none;
+  border-radius: 4px;
+  margin-right: 1rem;
+  text-decoration: none;
+  transition: background-color 0.3s ease-in-out;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.register-link::before,
+.login-link::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  opacity: 0.1;
+  transition: left 0.3s ease-in-out;
+}
+
+.register-link:hover::before,
+.login-link:hover::before {
+  left: 0;
+}
+
+.register-link:hover,
+.login-link:hover {
+  background-color: #6e49b7;
+} */
+
+/* .landing-page {
+  background: linear-gradient(0deg, rgba(127, 86, 218, 0.7), rgba(127, 86, 218, 0.7)),
+              url(https://s3-alpha-sig.figma.com/img/e82c/b787/0365d29c6f88d16a242936d4b304e816?Expires=1682294400&Signature=XncPRRT5XNSI50IikWW~xD9kUTvSngIM5gNHQQyP4Cu2LL7TjuxFRjhcNo5s1rutDftC5h1bi4zUmHWn86UdHcOvjP2fbcGUrlPDe385aOJb7N2QWM8mTwtBXr~eg3DubWAfObGt52yKXjlbn87cEfKse2SuOAAkSH2hc8iJLCp9GFrbNfr3IhggtJhyMUrFAtFw2~19FdxNnT8mvXdmXB821wcOsb3nsNv3y2db3h8sJSMUA3~htYUASg3KZmdm1OA54hSOJONisWl8zFhLg4V1dGPVqmnAAPNkKkiYs1unncbPqQRwUELLzMJnOn47Z5T1BZJTozRYKqVDD1S7BA__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4);
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.landing-page-title {
+  font-size: 4rem;
+  font-weight: bold;
+  color: #fff;
+  margin-top: 2rem;
+}
+
+.landing-page-description {
+  font-size: 1.5rem;
+  color: #fff;
+  margin-top: 1rem;
+  max-width: 800px;
+  line-height: 1.5;
+}
+
+.landing-page-link {
+  margin-top: 2rem;
+}
+
+.register-link,
+.login-link {
+  display: inline-block;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #fff;
+  padding: 1rem 2rem;
+  background-color: #7f56da;
+  border: none;
+  border-radius: 4px;
+  margin-right: 1rem;
+  text-decoration: none;
+  transition: background-color 0.3s ease-in-out;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.register-link::before,
+.login-link::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  opacity: 0.1;
+  transition: left 0.3s ease-in-out;
+}
+
+.register-link:hover::before,
+.login-link:hover::before {
+  left: 0;
+}
+
+.register-link:hover,
+.login-link:hover {
+  background-color: #6e49b7;
+} */
+
+/* .landing-page {
+  background: linear-gradient(0deg, rgba(127, 86, 218, 0.7), rgba(127, 86, 218, 0.7)),
+              url(https://s3-alpha-sig.figma.com/img/e82c/b787/0365d29c6f88d16a242936d4b304e816?Expires=1682294400&Signature=XncPRRT5XNSI50IikWW~xD9kUTvSngIM5gNHQQyP4Cu2LL7TjuxFRjhcNo5s1rutDftC5h1bi4zUmHWn86UdHcOvjP2fbcGUrlPDe385aOJb7N2QWM8mTwtBXr~eg3DubWAfObGt52yKXjlbn87cEfKse2SuOAAkSH2hc8iJLCp9GFrbNfr3IhggtJhyMUrFAtFw2~19FdxNnT8mvXdmXB821wcOsb3nsNv3y2db3h8sJSMUA3~htYUASg3KZmdm1OA54hSOJONisWl8zFhLg4V1dGPVqmnAAPNkKkiYs1unncbPqQRwUELLzMJnOn47Z5T1BZJTozRYKqVDD1S7BA__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4);
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.landing-page-title {
+  font-size: 4rem;
+  font-weight: bold;
+  color: #fff;
+  margin-top: 2rem;
+}
+
+.landing-page-description {
+  font-size: 1.5rem;
+  color: #fff;
+  margin-top: 1rem;
+  max-width: 800px;
+  line-height: 1.5;
+}
+
+.landing-page-link {
+  margin-top: 2rem;
+}
+
+.register-link,
+.login-link {
+  display: inline-block;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #fff;
+  padding: 1rem 2rem;
+  background-color: #7f56da;
+  border: none;
+  border-radius: 4px;
+  margin-right: 1rem;
+  text-decoration: none;
+  transition: background-color 0.3s ease-in-out;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.register-link::before,
+.login-link::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  opacity: 0.1;
+  transition: left 0.3s ease-in-out;
+}
+
+.register-link:hover::before,
+.login-link:hover::before {
+  left: 0;
+}
+
+.register-link:hover,
+.login-link:hover {
+  background-color: #6e49b7;
+} */
+
+/* .landing-page {
+  background: linear-gradient(0deg, rgba(127, 86, 218, 0.7), rgba(127, 86, 218, 0.7)),
+              url(https://s3-alpha-sig.figma.com/img/e82c/b787/0365d29c6f88d16a242936d4b304e816?Expires=1682294400&Signature=XncPRRT5XNSI50IikWW~xD9kUTvSngIM5gNHQQyP4Cu2LL7TjuxFRjhcNo5s1rutDftC5h1bi4zUmHWn86UdHcOvjP2fbcGUrlPDe385aOJb7N2QWM8mTwtBXr~eg3DubWAfObGt52yKXjlbn87cEfKse2SuOAAkSH2hc8iJLCp9GFrbNfr3IhggtJhyMUrFAtFw2~19FdxNnT8mvXdmXB821wcOsb3nsNv3y2db3h8sJSMUA3~htYUASg3KZmdm1OA54hSOJONisWl8zFhLg4V1dGPVqmnAAPNkKkiYs1unncbPqQRwUELLzMJnOn47Z5T1BZJTozRYKqVDD1S7BA__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4);
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.landing-page-title {
+  font-size: 4rem;
+  font-weight: bold;
+  color: #fff;
+  margin-top: 2rem;
+}
+
+.landing-page-description {
+  font-size: 1.5rem;
+  color: #fff;
+  margin-top: 1rem;
+  max-width: 800px;
+  line-height: 1.5;
+}
+
+.landing-page-link {
+  margin-top: 2rem;
+}
+
+.register-link,
+.login-link {
+  display: inline-block;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #fff;
+  padding: 1rem 2rem;
+  background-color: #7f56da;
+  border: none;
+  border-radius: 4px;
+  margin-right: 1rem;
+  text-decoration: none;
+  transition: background-color 0.3s ease-in-out;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.register-link::before,
+.login-link::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  opacity: 0.1;
+  transition: left 0.3s ease-in-out;
+}
+
+.register-link:hover::before,
+.login-link:hover::before {
+  left: 0;
+}
+
+.register-link:hover,
+.login-link:hover {
+  background-color: #6e49b7;
+} */
+
+/* .landing-page {
+  background: linear-gradient(0deg, rgba(127, 86, 218, 0.7), rgba(127, 86, 218, 0.7)),
+              url(https://s3-alpha-sig.figma.com/img/e82c/b787/0365d29c6f88d16a242936d4b304e816?Expires=1682294400&Signature=XncPRRT5XNSI50IikWW~xD9kUTvSngIM5gNHQQyP4Cu2LL7TjuxFRjhcNo5s1rutDftC5h1bi4zUmHWn86UdHcOvjP2fbcGUrlPDe385aOJb7N2QWM8mTwtBXr~eg3DubWAfObGt52yKXjlbn87cEfKse2SuOAAkSH2hc8iJLCp9GFrbNfr3IhggtJhyMUrFAtFw2~19FdxNnT8mvXdmXB821wcOsb3nsNv3y2db3h8sJSMUA3~htYUASg3KZmdm1OA54hSOJONisWl8zFhLg4V1dGPVqmnAAPNkKkiYs1unncbPqQRwUELLzMJnOn47Z5T1BZJTozRYKqVDD1S7BA__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4);
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.landing-page-title {
+  font-size: 4rem;
+  font-weight: bold;
+  color: #fff;
+  margin-top: 2rem;
+}
+
+.landing-page-description {
+  font-size: 1.5rem;
+  color: #fff;
+  margin-top: 1rem;
+  max-width: 800px;
+  line-height: 1.5;
+}
+
+.landing-page-link {
+  margin-top: 2rem;
+}
+
+.register-link,
+.login-link {
+  display: inline-block;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #fff;
+  padding: 1rem 2rem;
+  background-color: #7f56da;
+  border: none;
+  border-radius: 4px;
+  margin-right: 1rem;
+  text-decoration: none;
+  transition: background-color 0.3s ease-in-out;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.register-link::before,
+.login-link::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  opacity: 0.1;
+  transition: left 0.3s ease-in-out;
+}
+
+.register-link:hover::before,
+.login-link:hover::before {
+  left: 0;
+}
+
+.register-link:hover,
+.login-link:hover {
+  background-color: #6e49b7;
+} */

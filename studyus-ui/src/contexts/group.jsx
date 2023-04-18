@@ -15,6 +15,7 @@ export const GroupContextProvider = ({ children }) => {
   const [myGroupsTableData, setMyGroupsTableData] = useState([]);
   const [ids, setIds] = useState([]);
   const [members, setMembers] = useState([]);
+  const [groupName, setGroupName] = useState("");
 
   //const [tableData, setTableData] = useState([])
 
@@ -31,6 +32,20 @@ export const GroupContextProvider = ({ children }) => {
       if (data.groupList.length > 0) {
         setCurrentGroup(data.groupList[0]);
       }
+    } else if (error) {
+      setError(error);
+    }
+    setIsLoading(false);
+  };
+
+  const fetchGroupById = async (groupId) => {
+    setIsLoading(true);
+    setError(null);
+    console.log("fetchGroupById groupId: " + groupId) //WORKS
+    const { data, error } = await apiClient.fetchGroupById(groupId);
+    if (data) {
+      console.log("fetchGroupbyid data " + data.group.name)
+      setGroupName(data.group.name)
     } else if (error) {
       setError(error);
     }
@@ -170,10 +185,13 @@ export const GroupContextProvider = ({ children }) => {
     foundGroups,
     checkIfGroupFull,
     leaveGroup,
+    fetchGroupById,
     setFoundGroups,
     clearGroupContext,
     currentGroupId,
-    setCurrentGroupId
+    setCurrentGroupId,
+    groupName,
+    setGroupName
   };
 
   return (

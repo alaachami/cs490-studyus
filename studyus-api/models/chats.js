@@ -9,6 +9,7 @@ class Chats {
 
     // FUNCTION TO GET ALL CHAT MESSAGES
     static async getAllMessages({groupId, user}) {
+        console.log(groupId)
         //If a new member was not provided, throw a bad request error detailing that the user needs to provide a member email
         if(!groupId) {
             throw new BadRequestError(`Group id is missing!`)
