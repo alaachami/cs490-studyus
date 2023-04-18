@@ -10,14 +10,12 @@ const bearer = process.env.DAILYCO_API_KEY
 router.post('/create', async (req, res, next) => {
 
     const { name } = req.body
-    const { maxParticipants } = req.body 
 
 
     try {
       const body = {
         name: name,
         properties: {
-          max_participants: maxParticipants,
           autojoin: true,
           enable_knocking: true
         },
@@ -32,11 +30,26 @@ router.post('/create', async (req, res, next) => {
       const response = await axios.post('https://api.daily.co/v1/rooms', body, config);
       res.status(200).json(response.data);
     } catch (error) {
-      console.error(error)
-      res.status(500).json({ message: 'Internal server error' })
+      next(error)
     }
   });
 
+  router.post('/delete', async (req, res, next) => {
+    const { name } = req.body
+    try {
+
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + bearer
+        }
+      };
+      const response = await axios.delete('https://api.daily.co/v1/rooms/' + name, config);
+      res.status(200).json(response.data);
+    } catch (error) {
+      next(error)
+    }
+  });
 
 
 
