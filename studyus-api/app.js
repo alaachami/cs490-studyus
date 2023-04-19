@@ -36,7 +36,6 @@ app.use("/call", callRoutes)
 //Server Health Check
 app.get('/', async(req,res,next) => {
     res.status(200).json({"ping":"pong"})
-    res.header('Access-Control-Allow-Origin', 'http://localhost:5173'); // replace with your allowed origin
 })
 //ERROR HANDLING - Not Found
 app.use((req,res,next) => {
