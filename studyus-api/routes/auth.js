@@ -1,11 +1,12 @@
 const express = require("express")
 const router = express.Router()
+const cors = require('cors')
 const User = require("../models/user")
 const {createUserJwt} = require("../utils/tokens")
 const security = require("../middleware/security")
 
 //POST REQUEST TO LOG A USER INTO THEIR ACCOUNT
-router.post("/login", async (req,res,next) => {
+router.post("/login", cors(), async (req,res,next) => {
     try
     {
         //Request will take in an email and password
@@ -28,7 +29,7 @@ router.post("/login", async (req,res,next) => {
 
 
 //POST REQUEST TO REGISTER A USER TO THE DATABASE
-router.post("/register", async (req,res,next) => {
+router.post("/register", cors(), async (req,res,next) => {
     try
     {
         //Request will take in an email, password, and full name from user
@@ -51,7 +52,7 @@ router.post("/register", async (req,res,next) => {
 
 
 //GET REQUEST TO AUTHORIZE THE IDENTITY OF THE USER
-router.get("/me", security.requireAuthenticatedUser, async (req,res,next) => {
+router.get("/me", cors(),  security.requireAuthenticatedUser, async (req,res,next) => {
     try
     {
         //Get the email of the user from the local server
@@ -78,7 +79,7 @@ router.get("/me", security.requireAuthenticatedUser, async (req,res,next) => {
 
 
 //GET REQUEST TO GET INFORMATION ABOUT A USER GIVEN THEIR ID
-router.get("/users/:userId", security.requireAuthenticatedUser, async (req,res,next) => {
+router.get("/users/:userId", cors(), security.requireAuthenticatedUser, async (req,res,next) => {
     try
     {
         //Extract the user id from the request parameter

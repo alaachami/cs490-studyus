@@ -16,7 +16,9 @@ const callRoutes = require('./routes/call')
 const app = express()
 
 //APP USE - Parse incoming request bodies
-app.use(cors())
+app.use(cors({
+    origin: "*",
+}))
 app.use(express.json())
 app.use(morgan('tiny'))
 //APP USE - Security Middleware to authenticate user and create JWTs

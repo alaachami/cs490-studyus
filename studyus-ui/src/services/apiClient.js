@@ -107,7 +107,7 @@ class ApiClient {
   async startCall(name) {
     return await this.request({endpoint: `call/create`, method: 'POST', data: {name}});
   }
-  
+  //Function to end call
   async endCall(name) {
     return await this.request({endpoint: `call/delete`, method: 'POST', data: {name}});
   }
