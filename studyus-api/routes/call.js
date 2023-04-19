@@ -11,9 +11,14 @@ router.post('/create', async (req, res, next) => {
 
     const { name } = req.body
     const expiryTimeInSeconds = 3600; // or any other value in seconds
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + bearer
+      }}
 
-    // If the room exists, delete it before creating it again to avoid error
-    const existingRoom = await axios.get('https://api.daily.co/v1/rooms/' + name);
+    //If the room exists, delete it before creating it again to avoid error
+    const existingRoom = await axios.get('https://api.daily.co/v1/rooms/' + name,config); //wrong
     console.log(existingRoom)
     if (existingRoom) {
       const config = {
