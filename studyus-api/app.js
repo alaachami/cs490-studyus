@@ -38,6 +38,13 @@ app.get('/', async(req,res,next) => {
     res.status(200).json({"ping":"pong"})
 })
 
+// Server is configured to send the 'Access-Control-Allow-Origin' header with the value that matches the allowed origin.
+app.use(function(req, res, next) {
+    res.header('Access-Control-Allow-Origin', 'http://localhost:5173'); // replace with your allowed origin
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+    next();
+  });
+
 //ERROR HANDLING - Not Found
 app.use((req,res,next) => {
     return next(new NotFoundError())
