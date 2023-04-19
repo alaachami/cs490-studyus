@@ -40,9 +40,11 @@ export const useRegisterForm = ({ user, setUser}) => {
           setErrors((e) => ({ ...e, passwordConfirm: null }));
         }
       }
+
+
       if (event.target.name === "email") {
-        if (event.target.value.indexOf("@") === -1) {
-          setErrors((e) => ({ ...e, email: "Please enter a valid email." }));
+        if (!event.target.value.endsWith(".edu")) {
+          setErrors((e) => ({ ...e, email: "Please enter a valid email ending with .edu" }));
         } else {
           setErrors((e) => ({ ...e, email: null }));
         }
