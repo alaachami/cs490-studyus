@@ -165,10 +165,10 @@ export default function GroupPage() {
           <span className="leave-group-msg">Leave Group</span>
 
           <img
-            src="https://img.icons8.com/ios/512/exit--v1.png"
+            src="https://img.icons8.com/phone"
             onClick={() => handleCall(id, user)}
-            height="20"
-            width="20"
+            height="21"
+            width="21"
           ></img>
           <span className="leave-group-msg">Start Call</span>
 

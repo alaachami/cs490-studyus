@@ -132,7 +132,7 @@
     font-size: 15px;
     font-weight: bold;
     color: #333;
-    margin-right: 10px;
+    margin-right: 20px;
 }
 
 .timestamp {
@@ -166,6 +166,7 @@
   .message-input {
     height: 40px;
     padding: 5px;
+    padding-left: 20px;
     border: none;
     border-radius: 20px;
     background-color: #fff;

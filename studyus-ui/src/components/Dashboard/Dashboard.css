@@ -69,6 +69,11 @@
     font-size: 18px;
     line-height: 22px;
 }
+.greeting h1{
+    font-family: Inter;
+    color: #c1b0e5; 
+}
+
 .group-cont{
     width: 248px;
     height: 100vh;
@@ -136,7 +141,12 @@
     display:block;
     word-wrap: break-word;
     overflow: hidden;
-    text-align: justify;
+    text-align: left;
     white-space: wrap;
 
+}
+.search-area h3{
+    font-family:Arial, Helvetica, sans-serif;
+    color:#646464;
+    margin-top: 30px;
 }

@@ -56,7 +56,7 @@ export default function DashBoard() {
 
   const renderedMyGroups = myGroups && myGroups.map((group) => (
     <div className="group" key={group.id}>
-      <Link className= "link" to={'/group/' + group.id}><h5>{group.name}-{group.subject}</h5></Link>
+      <Link className= "link" to={'/group/' + group.id}><h5>{group.name} - {group.subject}</h5></Link>
       <p>{group.description}</p>
       {/* Add any other group information here */}
     </div>
@@ -76,7 +76,7 @@ export default function DashBoard() {
     <>
     <div className="logo"><h1>StudyUs</h1></div>
     <div className="dashboard">
-        <div className="banner"><h1>Dashboard, Hello {user.name}!</h1>
+        <div className="banner"><h1>Dashboard</h1>
           <div className="functions-cont">
             <img src="https://img.icons8.com/ios/512/exit--v1.png" onClick={logout} height="20"width="20"></img>
             <img src="https://img.icons8.com/windows/512/add-user-group-woman-man.png" onClick={handleCreateGroup} height="20"width="20"></img> 
@@ -89,6 +89,9 @@ export default function DashBoard() {
             
           </div>
           <div className="main">
+            <div className="greeting">
+              <h1>Hello, {user.name}!</h1>
+            </div>
             <div className="search-area">
             <h3>Find New Group</h3>
               <input type="text" onChange={handleSearchTextChange} placeholder="Search for groups" />
