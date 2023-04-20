@@ -18,17 +18,18 @@ router.post('/create', async (req, res, next) => {
       }}
 
     //If the room exists, delete it before creating it again to avoid error
-    const existingRoom = await axios.get('https://api.daily.co/v1/rooms/' + name,config); //wrong
-    console.log(existingRoom)
-    if (existingRoom) {
-      const config = {
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer ' + bearer
-        }
-      };
-      await axios.delete('https://api.daily.co/v1/rooms/' + name, config);
-    }
+    try {
+      const existingRoom = await axios.get('https://api.daily.co/v1/rooms/' + name, config); 
+      if (existingRoom) {
+        const config = {
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + bearer
+          }
+        };
+        await axios.delete('https://api.daily.co/v1/rooms/' + name, config);
+    }} catch(error){}
+    // Now, create the room based on the given name
     try {
       const body = {
         name: name,
