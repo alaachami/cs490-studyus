@@ -57,7 +57,7 @@ export default function GroupPage() {
       <div className="member" key={member.id}> 
         <div
           className="member-p"
-          style={{ background: `url(https://cdn.onlinewebfonts.com/svg/img_264157.png})` }}
+          // style={{ background: `url(https://cdn.onlinewebfonts.com/svg/img_264157.png})` }}
         ></div> 
         <div className="member-details">
           <div className="member-name">{member.name}</div> 
@@ -91,7 +91,8 @@ export default function GroupPage() {
       <div className="message" key={message.id}>
         <div className="message-header">
         <p className="member-p"
-          style={{ background: `url(https://cdn.onlinewebfonts.com/svg/img_264157.png})` }}></p>
+          // style={{ background: `url(https://cdn.onlinewebfonts.com/svg/img_264157.png})` }}
+          ></p>
         <p className="sender-name">{message.name}</p>
         <p className="timestamp">{formattedTimestamp}</p>
         

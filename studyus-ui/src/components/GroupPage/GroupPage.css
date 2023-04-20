@@ -70,6 +70,19 @@
     border-radius: 50%;
     margin-right: 10px;
     object-fit: cover;
+    background-image: url('https://cdn.onlinewebfonts.com/svg/img_264157.png');
+    opacity: .6;
+    background-size:contain;
+}
+p.member-p {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    margin-right: 10px;
+    object-fit: cover;
+    background-image: url('https://cdn.onlinewebfonts.com/svg/img_264157.png');
+    opacity: .6;
+    background-size:contain;
 }
 
 .member-name {
