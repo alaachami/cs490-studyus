@@ -7,10 +7,16 @@ class ApiClient {
     this.token = null
     this.tokenName = "studyus_token"
   }
-  
+
+  // Setting Token
   setToken(token) {
     this.token = token
     localStorage.setItem(this.tokenName, token)
+  }
+  // Getting Token from local storage
+  getToken(){
+    const token = localStorage.getItem(this.tokenName);
+    this.token = token;
   }
 
   async request({ endpoint, method = `GET`, data = {} }) {
@@ -34,6 +40,8 @@ class ApiClient {
       return { data: null, error: message || String(error) }
     }
   }
+
+
   
   // ----------------------- authentication -----------------------
   async login(credentials) {
