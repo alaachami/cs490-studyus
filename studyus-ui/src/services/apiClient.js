@@ -19,12 +19,14 @@ class ApiClient {
     const headers = {
       "Content-Type": "application/json",
       // Authorization: this.token ? `Bearer ${this.token}` : "",
-    }
-
+    };
     // Add the Authorization header if a token is present. This would keep the token after user refresh.
     if (this.token) {
       headers.Authorization = `Bearer ${this.token}`;
     }
+    
+    console.log("headers", headers)
+
     try {
       const res = await axios({ url, method, data, headers })
       return { data: res.data, error: null }
