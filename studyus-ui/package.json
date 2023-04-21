@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.html",
   "scripts": {
-    "postinstall": "npm run build",
+    "build": "vite build",
     "dev": "vite dev",
     "start": "vite start"
   },
