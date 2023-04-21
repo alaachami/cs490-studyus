@@ -1,5 +1,5 @@
 import axios from "axios"
-import API_BASE_URL from "../constants"
+import { API_BASE_URL } from "../constants"
 
 class ApiClient {
   constructor(remoteHostUrl) {
@@ -21,7 +21,7 @@ class ApiClient {
       // Authorization: this.token ? `Bearer ${this.token}` : "",
     };
     // Add the Authorization header if a token is present. This would keep the token after user refresh.
-    this.token && (headers.Authorization = `Bearer ${this.token}`)
+    this.token && (headers.Authorization = `Bearer ${this.token}`);
 
     console.log("headers", headers)
 
