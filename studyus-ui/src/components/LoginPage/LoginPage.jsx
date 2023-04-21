@@ -1,6 +1,6 @@
 import "./LoginPage.css";
 import React from "react";
-import LoginForm from "./Loginform/LoginForm.jsx";
+import LoginForm from "./Loginform/LoginForm";
 
 export default function LoginPage() {
   return (
