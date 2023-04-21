@@ -7,7 +7,7 @@
     "build": "vite build",
     "dev": "vite dev",
     "start": "vite start",
-    "postinstall": "npm install vite"
+    "postinstall": "npm install vite --save-prod"
   },
   "dependencies": {
     "@daily-co/daily-js": "^0.43.0",
