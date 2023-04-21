@@ -56,7 +56,7 @@ router.post("/", security.requireAuthenticatedUser, async (req, res, next) => {
 
 
 //FUNCTION TO RETURN A SPECIFIC GROUP BY THEIR ID
-router.get("/:groupId", async (req, res, next) => { //security.requireAuthenticatedUser, removed
+router.get("/:groupId", security.requireAuthenticatedUser, async (req, res, next) => {
     try {
         //Retrieve the team id from the given url
         const { groupId } = req.params

@@ -13,10 +13,12 @@ class ApiClient {
     this.token = token
     localStorage.setItem(this.tokenName, token)
   }
+  
   // Getting Token from local storage
-  getToken(){
-    const token = localStorage.getItem(this.tokenName);
-    this.token = token;
+    getToken() {
+      const token = localStorage.getItem(this.tokenName);
+      this.token = token;
+      return token;
   }
 
   async request({ endpoint, method = `GET`, data = {} }) {
@@ -24,11 +26,8 @@ class ApiClient {
 
     const headers = {
       "Content-Type": "application/json",
-      // Authorization: this.token ? `Bearer ${this.token}` : "",
+      Authorization: this.token ? `Bearer ${this.token}` : "",
     };
-    // Add the Authorization header if a token is present. This would keep the token after user refresh.
-    this.token && (headers.Authorization = `Bearer ${this.token}`);
-
     console.log("headers", headers)
 
     try {
