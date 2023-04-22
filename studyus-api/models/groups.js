@@ -29,7 +29,7 @@ class Groups
             `
                 SELECT *
                 FROM groups
-                ORDER BY id DESC
+                ORDER BY created_at DESC
                 LIMIT 5
             `
         );
