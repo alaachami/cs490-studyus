@@ -15,6 +15,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 // import { OpenContextProvider } from "../../contexts/open";
 import { useEffect, useState } from "react";
 import apiClient from "../../services/apiClient";
+import ApiClient from "../../services/apiClient";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 
 export default function AppContainer() {
@@ -44,7 +45,8 @@ export function App() {
       setIsProcessing(false);
     };
     //console.log("App dashboardStatistics:", dashboardStatistics)
-    const token = localStorage.getItem("studyus_token");
+    // const token = localStorage.getItem("studyus_token");
+    const token = ApiClient.getToken();
 
     if (token) {
       apiClient.setToken(token);
