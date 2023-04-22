@@ -36,7 +36,7 @@ const validateToken = (token) => {
     }
     catch(error)
     {
-        return {}
+        throw new Error('Invalid token');
     }
 }
 
