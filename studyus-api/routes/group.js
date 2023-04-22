@@ -128,7 +128,7 @@ router.get("/suggest", security.requireAuthenticatedUser, async (req, res, next)
         // Retrieve the user information from the local server
         const { user } = res.locals
         // Call the getLastFiveGroups function to get a list of the user's last five groups
-        const lastFiveGroups = await Groups.getLastFiveGroups({ user })
+        const lastFiveGroups = await Groups.suggestGroups({ user })
         // Return the list of the user's last five groups if successful
         return res.status(200).json({ lastFiveGroups: lastFiveGroups })
     }

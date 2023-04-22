@@ -31,7 +31,6 @@ class Groups
                 FROM groups
                 ORDER BY id DESC
                 LIMIT 5
-
             `
         );
         return results.rows;
