@@ -14,7 +14,7 @@ import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 // import { OpenContextProvider } from "../../contexts/open";
 import { useEffect, useState } from "react";
-import ApiClient from "../../services/ApiClient";
+import ApiClient from "../../services/apiClient";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 
 export default function AppContainer() {

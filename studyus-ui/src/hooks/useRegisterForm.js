@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import ApiClient from "../services/ApiClient"
+import ApiClient from "../services/apiClient"
 
 export const useRegisterForm = ({ user, setUser}) => {
     const navigate = useNavigate();

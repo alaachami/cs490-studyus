@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useNavigate } from "react";
-import ApiClient from "../services/ApiClient";
+import ApiClient from "../services/apiClient";
 const AuthContext = createContext(null);
 
 export const AuthContextProvider = ({ children }) => {
