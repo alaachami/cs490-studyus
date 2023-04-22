@@ -51,5 +51,9 @@ app.use((error, req, res, next) => {
     })
 })
 
+// Serve the frontend files from the dist directory
+app.use(express.static('../studyus-ui/dist'));
+
+
 //MODULE EXPORTS
 module.exports = app
