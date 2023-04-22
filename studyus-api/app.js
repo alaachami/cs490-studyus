@@ -34,6 +34,9 @@ app.use("/group", groupRoutes)
 app.use("/chat", chatRoutes)
 app.use("/call", callRoutes)
 
+// Serve the frontend files from the dist directory
+app.use(express.static('../studyus-ui/dist'));
+
 //Server Health Check
 app.get('/', async(req,res,next) => {
     res.status(200).json({"ping":"pong"})
@@ -51,8 +54,7 @@ app.use((error, req, res, next) => {
     })
 })
 
-// Serve the frontend files from the dist directory
-app.use(express.static('../studyus-ui/dist'));
+
 
 
 //MODULE EXPORTS
