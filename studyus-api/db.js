@@ -6,10 +6,11 @@ require('colors')
 
 
 //INSTANTIATE NEW PG CLIENT TO HOLD DATABASE URI
-const db = new Client({ connectionString: getDatabaseUri(),
-        ssl: {
-                rejectUnauthorized: false
-        }})
+const db = new Client({ connectionString: getDatabaseUri()
+        // ssl: {
+        //         rejectUnauthorized: false
+        // }
+    })
 
 
 

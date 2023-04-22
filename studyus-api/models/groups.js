@@ -23,19 +23,15 @@ class Groups
     }
     // This function uses a SQL query to retrieve the last 5 groups from the groups table,
     // ordered by descending id. It then returns the resulting rows as an array.
-    static async suggestGroups () {
-
-        const results = await db.query (
-            `
-                SELECT *
-                FROM groups
-                ORDER BY created_at DESC
-                LIMIT 5
-            `
-        );
+    static async suggestGroups() {
+        const results = await db.query(`
+          SELECT *
+          FROM groups
+          ORDER BY RANDOM()
+          LIMIT 5
+        `);
         return results.rows;
-    }
-
+      }
     //FUNCTION TO CREATE A NEW group FOR THE USER
     //Takes in only the name of the group, members, and projects associated with the group
     //And then inserts the results of the query into the database
