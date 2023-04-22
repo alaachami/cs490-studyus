@@ -22,7 +22,7 @@ export const AuthContextProvider = ({ children }) => {
 
   const signupUser = async () => {
     setIsProcessing(true);
-    const { data, error } = await apiClient.signupUser(credentials);
+    const { data, error } = await apiClient.signup(credentials);
     if (data) {
       setUser(data.user);
       apiClient.setToken(data.token);
