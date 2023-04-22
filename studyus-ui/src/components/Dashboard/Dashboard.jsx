@@ -11,6 +11,8 @@ export default function DashBoard() {
     const { user, logoutUser } = useAuthContext();
     const { myGroups, foundGroups, fetchMyGroups, searchForGroups, addToGroup, checkIfGroupFull, fetchMembers } = useGroupContext();
     const [searchText, setSearchText] = useState("");
+    const token = localStorage.getItem('token');
+    console.log("TOKENNN",token);
     
     const handleSearchTextChange = (event) => {
             const query = event.target.value;

@@ -29,7 +29,7 @@ export default function GroupPage() {
   // Initializing state for newMessage and setNewMessage using useState() hook
   const [newMessage, setNewMessage] = useState("");
   const token = localStorage.getItem('token');
-  console.log(token);
+  console.log("TOKENNN",token);
 
   // Defining handleLeaveGroup function with id and user parameters
   // Calling leaveGroup function with id and user.email arguments
