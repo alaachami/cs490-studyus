@@ -1,1 +1,1 @@
-web: cd studyus-ui && npm install && npm run build && cd .. && cd studyus-api && npm install && npm start && cd .. && cd studyus-ui && npm run dev
+web: cd studyus-ui && npm install && npm run build && cd .. && cd studyus-api && npm install && npm start
