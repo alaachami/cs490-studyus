@@ -84,7 +84,7 @@ export function App() {
             />
             <Route
               path="/group/:id"
-              element={ <GroupPage />} //protected route removed
+              element={<ProtectedRoute element={<GroupPage />} />}
             />
             <Route
               path="/groupform"
