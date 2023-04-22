@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
-import apiClient from "../services/apiClient";
+import ApiClient from "../services/ApiClient";
 
 const GroupContext = createContext({}); // Was originally null
 
@@ -27,7 +27,7 @@ export const GroupContextProvider = ({ children }) => {
   const fetchMyGroups = async () => {
     setIsLoading(true);
     setError(null);
-    const { data, error } = await apiClient.listAllGroups();
+    const { data, error } = await ApiClient.listAllGroups();
     if (data) {
       setMyGroups(data.groupList);
       if (data.groupList.length > 0) {
@@ -43,7 +43,7 @@ export const GroupContextProvider = ({ children }) => {
     setIsLoading(true);
     setError(null);
     console.log("fetchGroupById groupId: " + groupId) //WORKS
-    const { data, error } = await apiClient.fetchGroupById(groupId);
+    const { data, error } = await ApiClient.fetchGroupById(groupId);
     if (data) {
       console.log("fetchGroupbyid data " + data.group.name)
       setGroupName(data.group.name)
@@ -59,7 +59,7 @@ export const GroupContextProvider = ({ children }) => {
   const searchForGroups = async (query) => {
     setIsLoading(true);
     setError(null);
-    const { data, error } = await apiClient.searchForGroups(query);
+    const { data, error } = await ApiClient.searchForGroups(query);
     if (data) {
       setFoundGroups(data.groupList);
       // if (data.groupList.length > 0) {
@@ -74,7 +74,7 @@ export const GroupContextProvider = ({ children }) => {
   const leaveGroup = async (groupId, userEmail) => {
     setIsLoading(true);
     setError(null);
-    const { data, error } = await apiClient.leaveGroup(groupId,userEmail);
+    const { data, error } = await ApiClient.leaveGroup(groupId,userEmail);
     if (data) {
       fetchMyGroups();
     } else if (error) {
@@ -90,7 +90,7 @@ export const GroupContextProvider = ({ children }) => {
     console.log("addToGroup groupdId: " + groupId)
     console.log("addToGroup email: " + userEmail)
     // GroupdId and Useremail are both correct here, but undefined when passed to function
-    const { data, error } = await apiClient.addMemberToGroup(groupId, userEmail);
+    const { data, error } = await ApiClient.addMemberToGroup(groupId, userEmail);
     if (data) {
       fetchMyGroups();
     } else if (error) {
@@ -120,7 +120,7 @@ export const GroupContextProvider = ({ children }) => {
   const setCallUrl = async (name) => {
     setIsLoading(true);
     setError(null);
-    const { data } = await apiClient.startCall(name);
+    const { data } = await ApiClient.startCall(name);
     if (data){
       console.log(data.url)
         return data.url
@@ -135,9 +135,9 @@ export const GroupContextProvider = ({ children }) => {
     console.log("fetchMembers groupid: " + groupId)
     setIsLoading(true);
     setError(null);
-    console.log("Before apiClient.fetchMemberList")
-    const { data, error } = await apiClient.fetchMemberList(groupId);
-    console.log("After apiClient.fetchMemberList")
+    console.log("Before ApiClient.fetchMemberList")
+    const { data, error } = await ApiClient.fetchMemberList(groupId);
+    console.log("After ApiClient.fetchMemberList")
     console.log(data.groupData)
     if (data) {
       console.log(data.groupData)
@@ -154,9 +154,9 @@ export const GroupContextProvider = ({ children }) => {
     console.log("Group ID: " + groupId)
     setIsLoading(true);
     setError(null);
-    console.log("Before apiClient.checkIfGroupFull")
-    const { data, error } = await apiClient.checkIfGroupFull(groupId);
-    console.log("After apiClient.checkIfGroupFull")
+    console.log("Before ApiClient.checkIfGroupFull")
+    const { data, error } = await ApiClient.checkIfGroupFull(groupId);
+    console.log("After ApiClient.checkIfGroupFull")
     console.log(data.capacity)
     if (data) {
       console.log(data.capacity)

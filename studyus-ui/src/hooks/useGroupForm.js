@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import * as React from "react";
 import { useState } from "react";
-import apiClient from "../services/apiClient"
+import ApiClient from "../services/ApiClient"
 
 export const useGroupForm = ({user}) => {
   const navigate = useNavigate();
@@ -38,7 +38,7 @@ export const useGroupForm = ({user}) => {
     setIsLoading(true);
     setErrors((e) => ({ ...e, form: null }));
     try {
-      const { data, error } = await apiClient.createNewGroup({
+      const { data, error } = await ApiClient.createNewGroup({
         name: form.name, 
         subject: form.subject,
         isbn: form.isbn,

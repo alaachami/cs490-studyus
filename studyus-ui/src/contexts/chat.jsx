@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
-import apiClient from "../services/apiClient";
+import ApiClient from "../services/ApiClient";
 import { useParams } from "react-router-dom"; 
 import { useAuthContext } from "./auth";
 
@@ -18,7 +18,7 @@ export const ChatContextProvider = ({ children }) => {
     setIsLoading(true);
     setError(null);
     try {
-      const { data } = await apiClient.fetchMessages(groupId);
+      const { data } = await ApiClient.fetchMessages(groupId);
       setGroupMessages(data.chatList);
     } catch (error) {
       setError(error);
@@ -30,7 +30,7 @@ export const ChatContextProvider = ({ children }) => {
     setIsLoading(true);
     setError(null);
     try {
-      const { data } = await apiClient.sendMessage(id, userId, content);
+      const { data } = await ApiClient.sendMessage(id, userId, content);
       if (data) { 
         fetchGroupMessages(id);
       }

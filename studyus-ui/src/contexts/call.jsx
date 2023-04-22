@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
-import apiClient from "../services/apiClient";
+import ApiClient from "../services/ApiClient";
 
 const CallContext = createContext({});
 
@@ -13,7 +13,7 @@ export const CallContextProvider = ({ children }) => {
   const setCallUrl = async (name) => {
     setIsLoading(true);
     setError(null);
-    const { data } = await apiClient.startCall(name);
+    const { data } = await ApiClient.startCall(name);
     if (data){
         return data.url;
     } else if (error) {

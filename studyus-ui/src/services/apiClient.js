@@ -68,7 +68,7 @@ class ApiClient {
     return await this.request({ endpoint:'group', method: 'GET'})
   }
   async fetchGroupById(groupId){
-    console.log("apiClient groupID: " + groupId)
+    console.log("ApiClient groupID: " + groupId)
     return await this.request({ endpoint:`group/${groupId}`, method: 'GET'})
   }
 

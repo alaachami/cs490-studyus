@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import * as React from "react";
 import { useState } from "react";
-import apiClient from "../services/apiClient"
+import ApiClient from "../services/ApiClient"
 
 
 
@@ -30,21 +30,21 @@ export const useLoginForm = ({user, setUser}) => {
     setIsLoading(true);
     setErrors((e) => ({ ...e, form: null }));
   
-      /*const { data, error } = await apiClient.login({
+      /*const { data, error } = await ApiClient.login({
         email: form.email,
         password: form.password,
       });*/
 
 
       try {
-        const { data, error } = await apiClient.login({
+        const { data, error } = await ApiClient.login({
           email: form.email,
           password: form.password,
         });
   
         if (data) {
           setUser(data.user);
-          apiClient.setToken(data.token);
+          ApiClient.setToken(data.token);
           navigate("/dashboard");
           // fetchGroups();
         }
@@ -63,7 +63,7 @@ export const useLoginForm = ({user, setUser}) => {
     /* BEFORE CHANGE
       if (data) {
         setUser(data.user);
-        apiClient.setToken(data.token);
+        ApiClient.setToken(data.token);
         navigate("/dashboard");
         // fetchGroups();
       }

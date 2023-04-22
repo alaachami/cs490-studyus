@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import apiClient from "../services/apiClient"
+import ApiClient from "../services/ApiClient"
 
 export const useRegisterForm = ({ user, setUser}) => {
     const navigate = useNavigate();
@@ -82,14 +82,14 @@ export const useRegisterForm = ({ user, setUser}) => {
         setErrors((e) => ({ ...e, form: null }));
       }
   
-      const { data, error } = await apiClient.signup({
+      const { data, error } = await ApiClient.signup({
         email: form.email,
         name: form.name,
         password: form.password,
       });
       if (data) {
         setUser(data.user);
-        apiClient.setToken(data.token);
+        ApiClient.setToken(data.token);
         navigate('/dashboard')
       }
       if (error) {

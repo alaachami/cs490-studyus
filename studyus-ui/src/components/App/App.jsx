@@ -14,8 +14,8 @@ import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 // import { OpenContextProvider } from "../../contexts/open";
 import { useEffect, useState } from "react";
-import apiClient from "../../services/apiClient";
-import ApiClient from "../../services/apiClient";
+import ApiClient from "../../services/ApiClient";
+import ApiClient from "../../services/ApiClient";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 
 export default function AppContainer() {
@@ -36,7 +36,7 @@ export function App() {
 
   useEffect(() => {
     const fetchUserInfo = async () => {
-      const { data } = await apiClient.fetchUserFromToken();
+      const { data } = await ApiClient.fetchUserFromToken();
       if (data) {
         setUser(data.user);
         // fetchGroups();
@@ -49,7 +49,7 @@ export function App() {
     const token = ApiClient.getToken();
 
     if (token) {
-      apiClient.setToken(token);
+      ApiClient.setToken(token);
       setIsProcessing(true);
       setError(null);
       fetchUserInfo();

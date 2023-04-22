@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useNavigate } from "react";
-import apiClient from "../services/apiClient";
+import ApiClient from "../services/ApiClient";
 const AuthContext = createContext(null);
 
 export const AuthContextProvider = ({ children }) => {
@@ -10,10 +10,10 @@ export const AuthContextProvider = ({ children }) => {
 
   const loginUser = async () => {
     setIsProcessing(true);
-    const { data, error } = await apiClient.login(credentials);
+    const { data, error } = await ApiClient.login(credentials);
     if (data) {
       setUser(data.user);
-      apiClient.setToken(data.token);
+      ApiClient.setToken(data.token);
       localStorage.setItem("studyus_token", data.token);
     }
     if (error) setError(error);
@@ -22,10 +22,10 @@ export const AuthContextProvider = ({ children }) => {
 
   const signupUser = async () => {
     setIsProcessing(true);
-    const { data, error } = await apiClient.signup(credentials);
+    const { data, error } = await ApiClient.signup(credentials);
     if (data) {
       setUser(data.user);
-      apiClient.setToken(data.token);
+      ApiClient.setToken(data.token);
       localStorage.setItem("studyus_token", data.token);
     }
     if (error) setError(error);
@@ -34,7 +34,7 @@ export const AuthContextProvider = ({ children }) => {
 
   const fetchUserFromToken = async () => {
     setIsProcessing(true);
-    const { data } = await apiClient.fetchUserFromToken();
+    const { data } = await ApiClient.fetchUserFromToken();
     if (data) {
       setUser(data.user);
     }
@@ -48,7 +48,7 @@ export const AuthContextProvider = ({ children }) => {
     setInitialized(true);
     setError(null);
     setIsProcessing(false);
-    apiClient.logoutUser();
+    ApiClient.logoutUser();
   };
 
   const authValue = {
