@@ -123,11 +123,12 @@ router.post("/remove", security.requireAuthenticatedUser, async (req, res, next)
 
 
 
-router.get("/suggest", security.requireAuthenticatedUser, async (req, res, next) => {
+router.get("/last-five-groups", security.requireAuthenticatedUser, async (req, res, next) => {
     try {
-        // Retrieve the user information from the local server ????????????
+        // Retrieve the user information from the local server
+        const { user } = res.locals
         // Call the getLastFiveGroups function to get a list of the user's last five groups
-        const lastFiveGroups = await Groups.suggestGroups();
+        const lastFiveGroups = await Groups.suggestGroups()
         // Return the list of the user's last five groups if successful
         return res.status(200).json({ lastFiveGroups: lastFiveGroups })
     }
@@ -135,7 +136,6 @@ router.get("/suggest", security.requireAuthenticatedUser, async (req, res, next)
         next(error)
     }
 })
-
 
 
 //FUNCTION TO CHECK IF A MEMBER IS VALID AND RETURN THE USERID
