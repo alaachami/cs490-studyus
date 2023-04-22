@@ -5,7 +5,7 @@ const {createUserJwt} = require("../utils/tokens")
 const security = require("../middleware/security")
 
 //POST REQUEST TO LOG A USER INTO THEIR ACCOUNT
-router.post("https://studyus.herokuapp.com/auth/login", async (req,res,next) => {
+router.post("/login", async (req,res,next) => {
     try
     {
         //Request will take in an email and password
