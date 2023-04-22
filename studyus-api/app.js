@@ -37,7 +37,9 @@ app.use("/chat", chatRoutes)
 app.use("/call", callRoutes)
 
 // Serve the frontend files from the dist directory
-app.use(express.static(path.join(__dirname, '../studyus-ui/dist')));
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../studyus-ui/dist/index.html'));
+  });
 
 //Server Health Check
 app.get('/', async(req,res,next) => {
