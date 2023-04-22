@@ -11,6 +11,8 @@ const authRoutes = require('./routes/auth')
 const groupRoutes = require('./routes/group')
 const chatRoutes = require('./routes/chat')
 const callRoutes = require('./routes/call')
+const path = require('path');
+
 
 //Create Express Application
 const app = express()
@@ -35,7 +37,7 @@ app.use("/chat", chatRoutes)
 app.use("/call", callRoutes)
 
 // Serve the frontend files from the dist directory
-app.use(express.static('../studyus-ui/dist'));
+app.use(express.static(path.join(__dirname, '../studyus-ui/dist')));
 
 //Server Health Check
 app.get('/', async(req,res,next) => {
