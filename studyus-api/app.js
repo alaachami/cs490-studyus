@@ -25,8 +25,8 @@ app.use(cors(corsOptions))
 
 app.use(express.json())
 
-// // Serve the frontend files from the dist directory
-// app.use(express.static('../studyus-ui/dist'));
+// Serve the frontend files from the dist directory
+app.use(express.static('../studyus-ui/dist'));
 app.use(morgan('tiny'))
 //APP USE - Security Middleware to authenticate user and create JWTs
 app.use(security.extractUserFromJwt)
