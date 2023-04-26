@@ -17,6 +17,14 @@ html,body {
     top: 0px;
     background: #7F56DA;
 }
+
+.logo a {
+    text-decoration: none;
+  }
+
+.logo a:hover {
+    text-decoration: none;
+  }
 .logo h1{
     font-family: 'Inter';
     height: 39px;

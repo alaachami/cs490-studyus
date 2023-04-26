@@ -23,6 +23,8 @@
     cursor: pointer;
 }
 
+
+
 .functions-cont:hover::after {
     position: absolute;
     top: 100%;

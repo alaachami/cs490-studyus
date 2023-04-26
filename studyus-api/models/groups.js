@@ -23,13 +23,16 @@ class Groups
     }
     // This function uses a SQL query to retrieve the last 5 groups from the groups table,
     // ordered by descending id. It then returns the resulting rows as an array.
-    static async suggestGroups() {
+    static async suggestGroups({user}) {
+        const userId = await Groups.fetchUserIdFromEmail(user.email)
         const results = await db.query(`
           SELECT *
           FROM groups
+          LEFT JOIN group_members ON groups.id = group_members.group_id
+          WHERE group_members.member_id IS NULL OR group_members.member_id <> $1
           ORDER BY RANDOM()
           LIMIT 5
-        `);
+        `, [userId]);
         return results.rows;
       }
     //FUNCTION TO CREATE A NEW group FOR THE USER
@@ -238,9 +241,9 @@ class Groups
             `, [groupId, userId]);
     
         // If no rows are returned, it means the member was not found in the group
-        if (results.rows.length === 0) {
-            throw new NotFoundError("Member not found in the group.");
-        }
+        // if (results.rows.length === 0) {
+        //     throw new NotFoundError("Member not found in the group.");
+        // }
         
         const groupMembersCount = await db.query(
             `

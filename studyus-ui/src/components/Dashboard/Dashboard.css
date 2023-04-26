@@ -132,6 +132,21 @@
     border-radius: 25px;
     font-family: Inter;
 }
+
+.group-cont h3 {
+    color: #6D73B0;
+    font-weight: 80px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+    width: 75%;
+    border: #6D73B0 3px solid;
+    border-radius: 25px;
+    font-family: Inter;
+}
 .group p{
     font-size: 14px;
     line-height: 1em;

@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import {Link } from "react-router-dom";
 import { useGroupContext } from "../../contexts/group";
 import { useAuthContext } from "../../contexts/auth";
 import { useCallContext } from "../../contexts/call";
@@ -152,7 +153,9 @@ export default function GroupPage() {
   return (
     <>
       <div className="logo">
-        <h1>StudyUs</h1>
+        <Link to="/dashboard">
+          <h1>StudyUs</h1>
+        </Link>
       </div>
       <div className="banner">
         <h1>{groupName}</h1>

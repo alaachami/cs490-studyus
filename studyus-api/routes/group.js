@@ -58,7 +58,7 @@ router.get("/suggest", security.requireAuthenticatedUser, async (req, res, next)
         //Retrieve the user information from the local server
         const { user } = res.locals
         //Call the listTeams function to get a list of all the teams a user created or is a member of
-        const groupList = await Groups.suggestGroups({ user })
+        const groupList = await Groups.suggestGroups({ user: user })
         //Return the list of all the teams if successful
         return res.status(200).json({ groupList: groupList })
     }
