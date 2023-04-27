@@ -9,7 +9,8 @@ require('colors')
 const db = new Client({ connectionString: getDatabaseUri(),
         ssl: {
                 rejectUnauthorized: false
-        }})
+        }
+    })
 
 
 

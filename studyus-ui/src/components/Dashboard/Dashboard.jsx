@@ -9,8 +9,9 @@ import "./Dashboard.css";
 export default function DashBoard() {
     const navigate = useNavigate();
     const { user, logoutUser } = useAuthContext();
-    const { myGroups, foundGroups, fetchMyGroups, searchForGroups, addToGroup, checkIfGroupFull, fetchMembers } = useGroupContext();
+    const { myGroups, foundGroups, fetchMyGroups, searchForGroups, addToGroup, checkIfGroupFull, fetchMembers, suggestGroups} = useGroupContext();
     const [searchText, setSearchText] = useState("");
+    const [suggestedGroups, setSuggestedGroups] = useState([]);
     
     const handleSearchTextChange = (event) => {
             const query = event.target.value;
@@ -50,6 +51,9 @@ export default function DashBoard() {
   // useEffect to fetch groups on initial load
   useEffect(() => {
     fetchMyGroups();
+    suggestGroups().then((groups) => {
+      setSuggestedGroups(groups);
+    });
     //newFetchTeamsTableData();
     //setIsLoading(false);
   }, []);
@@ -64,17 +68,26 @@ export default function DashBoard() {
   
   const renderedFoundGroups = foundGroups && foundGroups.map((group) => (
     <div key={group.id}>
-      <Link to={'/groups/' + group.id}><h2>{group.name}</h2></Link>
+      <Link to={'/group/' + group.id}><h2>{group.name}</h2></Link>
       <p>{group.description}</p>
       <button onClick={() => handleJoinGroup(group.id)}>{checkGroup()}</button>
       {/* Add any other group information here */}
     </div>
   ));
 
+  const renderedSuggestedGroups = suggestedGroups && suggestedGroups.map((group) => (
+    <div className="group" key={group.id}>
+        <Link className= "link" to={'/group/' + group.id}><h5>{group.name} - {group.subject}</h5></Link>
+        <p>{group.description}</p>
+        <button onClick={() => handleJoinGroup(group.id)}>{checkGroup()}</button>
+        {/* Add any other group information here */}
+    </div>
+));
+
   
   return (
     <>
-    <div className="logo"><h1>StudyUs</h1></div>
+    <div className="logo"><h1>StudyUs</h1></div> 
     <div className="dashboard">
         <div className="banner"><h1>Dashboard</h1>
           <div className="functions-cont">
@@ -86,6 +99,8 @@ export default function DashBoard() {
           <div className="group-cont">
             <h2>Groups</h2>
             {renderedMyGroups}
+            <h3>Suggestions</h3>
+            {renderedSuggestedGroups}
             
           </div>
           <div className="main">

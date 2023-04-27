@@ -52,6 +52,21 @@ router.post("/", security.requireAuthenticatedUser, async (req, res, next) => {
 })
 
 
+//FUNCTION TO LIST ALL THE GROUPS A USER BELONGS TO 
+router.get("/suggest", security.requireAuthenticatedUser, async (req, res, next) => {
+    try {
+        //Retrieve the user information from the local server
+        const { user } = res.locals
+        //Call the listTeams function to get a list of all the teams a user created or is a member of
+        const groupList = await Groups.suggestGroups({ user: user })
+        //Return the list of all the teams if successful
+        return res.status(200).json({ groupList: groupList })
+    }
+    catch (error) {
+        next(error)
+    }
+})
+
 
 
 
@@ -122,8 +137,15 @@ router.post("/remove", security.requireAuthenticatedUser, async (req, res, next)
 
 
 
-
-
+router.get("/", async (req, res, next) => {
+    try {
+      const { user } = res.locals;
+      const lastFiveGroups = await Groups.suggestGroups();
+      return res.status(200).json({ lastFiveGroups: lastFiveGroups });
+    } catch (error) {
+      next(error);
+    }
+  });
 
 //FUNCTION TO CHECK IF A MEMBER IS VALID AND RETURN THE USERID
 router.get("/user/:email", security.requireAuthenticatedUser, async (req, res, next) => {
@@ -140,8 +162,6 @@ router.get("/user/:email", security.requireAuthenticatedUser, async (req, res, n
         next(error)
     }
 })
-
-
 
 
 

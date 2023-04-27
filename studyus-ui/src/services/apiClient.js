@@ -56,6 +56,12 @@ class ApiClient {
   async listAllGroups(){
     return await this.request({ endpoint:'group', method: 'GET'})
   }
+
+  async suggestGroups(){
+    console.log("Im in apiClient")
+    return await this.request({ endpoint:'group/suggest', method:'GET'})
+  }
+
   async fetchGroupById(groupId){
     console.log("apiClient groupID: " + groupId)
     return await this.request({ endpoint:`group/${groupId}`, method: 'GET'})

@@ -42,7 +42,7 @@ export const ChatContextProvider = ({ children }) => {
 
   // useEffect to fetch groups on initial load
   useEffect(() => {
-    fetchGroupMessages();
+    // fetchGroupMessages();
   }, []);
 
   const clearChatContext = () => {

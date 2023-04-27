@@ -39,6 +39,20 @@ export const GroupContextProvider = ({ children }) => {
     setIsLoading(false);
   };
 
+  const suggestGroups = async () => {
+    setIsLoading(true);
+    setError(null);
+    const { data, error } = await apiClient.suggestGroups();
+    if (data) {
+      console.log("Groups: " , data)
+      return data.groupList
+    } else if (error) {
+      setError(error);
+    }
+    setIsLoading(false);
+  };
+
+
   const fetchGroupById = async (groupId) => {
     setIsLoading(true);
     setError(null);
@@ -204,6 +218,7 @@ export const GroupContextProvider = ({ children }) => {
     setFoundGroups,
     clearGroupContext,
     currentGroupId,
+    suggestGroups,
     setCurrentGroupId,
     groupName,
     link,
