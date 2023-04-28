@@ -22,11 +22,15 @@ StudyUs is an app designed for students and instructors. It allows its users to 
 
 ## Installation
 
-To install StudyUs, follow these steps:
+To run the StudyUs development enviroment, follow these steps:
 
 1. Clone the repository to your local machine.
-2. Install the required dependencies using `npm install`.
-3. Start the app using `npm start`.
+2. Install the required dependencies using 
+`cd studyus-api` then
+`npm install`
+3. Start the app using
+`cd studyus-api` then
+`npm start`
 
 ## Usage
 
