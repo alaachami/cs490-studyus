@@ -2,7 +2,7 @@ Sure, here is an example of raw text for a README page on GitHub:
 
 # StudyUs
 
-Visit the website [Here](studyus.herokuapp.com)
+Visit the website [Here](https://studyus.herokuapp.com)
 
 StudyUs is an app designed for students and instructors. It allows its users to create or join groups with specified information, such as school, course, book, and other descriptions. Users can start video calls and chat once they are in a group.
 
