@@ -29,6 +29,7 @@ To run the StudyUs development enviroment, follow these steps:
 2. Install the required dependencies using 
 `cd studyus-api` then
 `npm install`
+4. Create Database: `cd studyus-api` then run the command `psql -U postgres -p 5432 -f studyus.sql`
 3. Start the app using
 `cd studyus-api` then
 `npm start`
