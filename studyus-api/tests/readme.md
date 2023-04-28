@@ -1,5 +1,3 @@
-Sure, here's an example of a readme file for the test folder you described:
-
 # Test Suite for StudyUs Application
 
 This folder contains the automated tests for the StudyUs application, as well as a folder called Insomnia that includes screenshots of manual tests conducted using the Insomnia REST client. 
