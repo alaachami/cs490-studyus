@@ -91,8 +91,8 @@ export default function DashBoard() {
     <div className="dashboard">
         <div className="banner"><h1>Dashboard</h1>
           <div className="functions-cont">
-            <img src="https://img.icons8.com/ios/512/exit--v1.png" onClick={logout} height="20"width="20"></img>
-            <img src="https://img.icons8.com/windows/512/add-user-group-woman-man.png" onClick={handleCreateGroup} height="20"width="20"></img> 
+            <img src="https://img.icons8.com/ios/512/exit--v1.png" onClick={logout} height="20"width="20"></img>Logout
+            <img src="https://img.icons8.com/windows/512/add-user-group-woman-man.png" onClick={handleCreateGroup} height="20"width="20"></img>Create Group
           </div>
         </div>
         <div className="main-cont">

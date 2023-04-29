@@ -166,7 +166,7 @@ export default function GroupPage() {
             height="20"
             width="20"
           ></img>
-          <span className="leave-group-msg">Leave Group</span>
+          Leave Group
 
           <img
             src="https://img.icons8.com/phone"
@@ -174,7 +174,7 @@ export default function GroupPage() {
             height="21"
             width="21"
           ></img>
-          <span className="leave-group-msg">Start Call</span>
+          Start Call
 
         </div>
       </div>

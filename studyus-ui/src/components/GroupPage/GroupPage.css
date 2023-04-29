@@ -13,7 +13,7 @@
     padding-left: 10px;
     padding-right: 10px;
     position: absolute;
-    left: 70vw;
+    left: 65vw;
     top: 25px;
     height: 30px;
     width: max-content;
@@ -25,7 +25,7 @@
 
 
 
-.functions-cont:hover::after {
+/* .functions-cont:hover::after {
     position: absolute;
     top: 100%;
     left: 50%;
@@ -34,15 +34,15 @@
     color: #FFF;
     padding: 5px 10px;
     border-radius: 5px;
-}
+} */
 
 .leave-group-msg {
     display: none;
 }
 
-.functions-cont:hover .leave-group-msg {
+/* .functions-cont:hover .leave-group-msg {
     display: block;
-}
+} */
 
 .members-cont {
     display: flex;
