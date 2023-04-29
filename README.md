@@ -1,5 +1,3 @@
-Sure, here is an example of raw text for a README page on GitHub:
-
 # StudyUs
 
 Visit the website [Here](https://studyus.herokuapp.com)
