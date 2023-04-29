@@ -42,7 +42,7 @@ To use StudyUs, follow these steps:
 
 ## Testing
 
-Refer to readme file in test directory for more information on how to run tests. 
+Refer to readme file in test directory in studyus-api/tests for more information on how to run tests. 
 Note: run command `npm install -g jest` before running any tests.
 
 ## Contributing
