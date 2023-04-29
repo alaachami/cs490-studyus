@@ -40,6 +40,11 @@ To use StudyUs, follow these steps:
 2. Create a new group or search for existing groups to join.
 3. Use the chat or video call features to communicate with your group members.
 
+## Testing
+
+Refer to readme file in test directory for more information on how to run tests. 
+Note: run command `npm install -g jest` before running any tests.
+
 ## Contributing
 
 Contributions to StudyUs are welcome! To contribute, follow these steps:
